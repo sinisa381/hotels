@@ -3,18 +3,18 @@ import React, { useState } from 'react'
 const initialstate = {
 	rooms: [],
 	sortedRooms: [],
-	featuredRooms: [],
-	formData: {
-		type: 'all',
-		capacity: 1,
-		price: 0,
-		minPrice: 10,
-		maxPrice: 0,
-		minSize: 0,
-		maxSize: 0,
-		breakfast: false,
-		pets: false
-	}
+	featuredRooms: []
+}
+const formData = {
+	type: 'all',
+	capacity: 1,
+	price: 0,
+	minPrice: 10,
+	maxPrice: 0,
+	minSize: 0,
+	maxSize: 0,
+	breakfast: false,
+	pets: false
 }
 const RoomContext = React.createContext(initialstate)
 
@@ -22,7 +22,7 @@ const RoomProvider = ({ children }) => {
 	const [ rooms, setRooms ] = useState([])
 	const [ sortedRooms, setSortedRooms ] = useState([])
 	const [ featuredRooms, setFeaturedRooms ] = useState([])
-	const [ formdata, setFormdata ] = useState({ ...initialstate.formData })
+	const [ formdata, setFormdata ] = useState(formData)
 
 	const handleChange = event => {
 		const target = event.target
