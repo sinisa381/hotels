@@ -8,6 +8,7 @@ import { RoomContext } from '../context'
 import styled from '@emotion/styled'
 
 export default () => {
+	const context = useContext(RoomContext)
 	const {
 		setRooms,
 		rooms,
@@ -18,11 +19,20 @@ export default () => {
 		formdata,
 		setFormdata,
 		handleChange
-	} = useContext(RoomContext)
-	const { capacity, price, minPrice, maxPrice, minSize, maxSize, breakfast, pets, type } = formdata
+	} = context
+	const {
+		capacity = 1,
+		price = 0,
+		minPrice = 0,
+		maxPrice = 0,
+		minSize = 0,
+		maxSize = 0,
+		breakfast = false,
+		pets = false,
+		type = 'all'
+	} = formdata
 	const tempResponse = roomData()
 	const response = tempResponse.map(({ node }) => {
-		console.log(node)
 		const room = {
 			...node,
 			images: node.images.map(({ fluid }) => fluid)
