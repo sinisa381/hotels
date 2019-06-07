@@ -8,6 +8,14 @@ import { RoomContext } from '../context'
 import styled from '@emotion/styled'
 
 export default () => {
+	useEffect(() => {
+		setRooms(response)
+		let maxPrice = Math.max(...response.map(item => item.price))
+		let maxSize = Math.max(...response.map(item => item.size))
+		setFormdata({ ...formdata, price: maxPrice, maxPrice, maxSize })
+		setFeaturedRooms(featured)
+		setSortedRooms(response)
+	}, [])
 	const {
 		setRooms,
 		rooms,
@@ -47,14 +55,6 @@ export default () => {
 		</option>
 	))
 	const featured = rooms.filter(room => room.featured === true)
-	useEffect(() => {
-		setRooms(response)
-		let maxPrice = Math.max(...response.map(item => item.price))
-		let maxSize = Math.max(...response.map(item => item.size))
-		setFormdata({ ...formdata, price: maxPrice, maxPrice, maxSize })
-		setFeaturedRooms(featured)
-		setSortedRooms(response)
-	}, [])
 
 	return (
 		<React.Fragment>
