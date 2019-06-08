@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from 'react'
 import Room from '../components/Room'
 import Layout from '../components/layout'
 import '../components/styled.css'
-import { Box, Text, Button } from '@rebass/emotion'
+import { Card, Flex, Heading, Box, Text, Button } from '@rebass/emotion'
 import roomData from '../hooks/roomQuery'
 import { RoomContext } from '../context'
+import { mq } from '../globals'
 import styled from '@emotion/styled'
 
 export default () => {
@@ -28,6 +29,7 @@ export default () => {
 		handleChange
 	} = useContext(RoomContext)
 	let capacity, price, minPrice, maxPrice, minSize, maxSize, breakfast, pets, type
+	//just because netlify cant recognize formdata
 	if (formdata) {
 		capacity = formdata.capacity
 		price = formdata.price
@@ -71,96 +73,127 @@ export default () => {
 	return (
 		<React.Fragment>
 			<Layout>
-				<Box mt='2' />
-				<p>hello from rooms</p>
+				<Box mx='auto' mt='2' width={400}>
+					<Heading m='3' color='blue' fontFamily='sans' textAlign='center'>
+						Find your place
+					</Heading>
+					<Button
+						mx='auto'
+						textAlign='center'
+						mb={[ 2, 2, 3 ]}
+						variant='outline'
+						style={{ cursor: 'pointer', outline: 'none' }}
+						onClick={e => setSortedRooms(rooms)}
+					>
+						Refresh data
+					</Button>
+				</Box>
+
 				<section>
-					<section className='filter-container'>
-						{/* <Title title='search rooms' /> */}
-						<form className='filter-form'>
-							{/* select type */}
-							<div className='form-group'>
-								<label htmlFor='type'>room type</label>
-								<select
-									name='type'
-									id='type'
-									onChange={handleChange}
-									className='form-control'
-									value={type}
-								>
-									{types}
-								</select>
-							</div>
-							{/* end of select type */}
-							{/* guests  */}
-							<div className='form-group'>
-								<label htmlFor='capacity'>Guests</label>
-								<select
-									name='capacity'
-									id='capacity'
-									onChange={handleChange}
-									className='form-control'
-									value={capacity}
-								>
-									{people}
-								</select>
-							</div>
-							{/* end of guests */}
-							{/* room price */}
-							<div className='form-group'>
-								<label htmlFor='price'>room price ${price}</label>
-								<input
-									type='range'
-									name='price'
-									min={minPrice}
-									max={maxPrice}
-									id='price'
-									value={price}
-									onChange={handleChange}
-									className='form-control'
-								/>
-							</div>
-							{/* end of room price*/}
-							{/* size */}
-							<div className='form-group'>
-								<label htmlFor='price'>room size </label>
-								<div className='size-inputs'>
-									<input
-										type='number'
-										name='minSize'
-										value={minSize}
+					<form>
+						<FormContainer bg='green' mx='auto' my='3' px='6' py='3'>
+							<Card mb={[ 2, 2, 3 ]}>
+								<Flex alignItems='center' justifyContent='space-around'>
+									<label htmlFor='type'>
+										<Text mr='2' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+											Room type
+										</Text>
+									</label>
+									<select
+										className='select-css'
+										name='type'
+										id='type'
 										onChange={handleChange}
-										className='size-input'
-									/>
+										value={type}
+										style={{ marginTop: 5 }}
+									>
+										{types}
+									</select>
+								</Flex>
+							</Card>
+							<Card mb={[ 2, 2, 3 ]}>
+								<Flex alignItems='center' justifyContent='space-around'>
+									<label htmlFor='capacity'>
+										<Text mr='2' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+											Guests
+										</Text>
+									</label>
+									<select name='capacity' id='capacity' onChange={handleChange} value={capacity}>
+										{people}
+									</select>
+								</Flex>
+							</Card>
+							<Card mb={[ 2, 2, 3 ]}>
+								<Flex alignItems='center' justifyContent='space-around'>
+									<label htmlFor='price'>
+										<Text mr='2' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+											Price ${price}
+										</Text>
+									</label>
 									<input
-										type='number'
-										name='maxSize'
-										value={maxSize}
-										onChange={handleChange}
-										className='size-input'
-									/>
-								</div>
-							</div>
-							{/* end of select type */}
-							{/* extras */}
-							<div className='form-group'>
-								<div className='single-extra'>
-									<input
-										type='checkbox'
-										name='breakfast'
-										id='breakfast'
-										checked={breakfast}
+										type='range'
+										name='price'
+										min={minPrice}
+										max={maxPrice}
+										id='price'
+										value={price}
 										onChange={handleChange}
 									/>
-									<label htmlFor='breakfast'>breakfast</label>
-								</div>
-								<div className='single-extra'>
-									<input type='checkbox' name='pets' checked={pets} onChange={handleChange} />
-									<label htmlFor='breakfast'>pets</label>
-								</div>
-							</div>
-							{/* end of extras type */}
-						</form>
-					</section>
+								</Flex>
+							</Card>
+							<Card mb={[ 2, 2, 3 ]}>
+								<Flex alignItems='center' justifyContent='space-around'>
+									<label htmlFor='price'>
+										<Text mr='2' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+											Room size
+										</Text>
+									</label>
+									<div className='size-inputs'>
+										<input
+											type='number'
+											name='minSize'
+											value={minSize}
+											onChange={handleChange}
+											style={{ width: 60 }}
+										/>
+										<input
+											type='number'
+											name='maxSize'
+											value={maxSize}
+											onChange={handleChange}
+											style={{ width: 60 }}
+										/>
+									</div>
+								</Flex>
+							</Card>
+							<Card>
+								<Flex justifyContent='center'>
+									<Box mr={[ 2, 3, 3 ]}>
+										<input
+											type='checkbox'
+											name='breakfast'
+											id='breakfast'
+											checked={breakfast}
+											onChange={handleChange}
+										/>
+										<label htmlFor='breakfast'>
+											<Text style={{ display: 'inline-block' }} mx='2'>
+												Breakfast
+											</Text>
+										</label>
+									</Box>
+									<Box mr={[ 2, 3, 3 ]}>
+										<input type='checkbox' name='pets' checked={pets} onChange={handleChange} />
+										<label htmlFor='breakfast'>
+											<Text style={{ display: 'inline-block' }} mx='2'>
+												Pets
+											</Text>{' '}
+										</label>
+									</Box>
+								</Flex>
+							</Card>
+						</FormContainer>
+					</form>
 				</section>
 				<Gallery>{sortedRooms.map(room => <Room key={room.id} room={room} />)}</Gallery>
 				<Text color='white' bg='green'>
@@ -176,4 +209,11 @@ const Gallery = styled(Box)`
 display:grid;
 grid-template-columns:repeat(3,1fr);
 grid-gap:10px;
+`
+const FormContainer = styled(Box)`
+width:100%;
+${mq[1]}{
+ width: 35rem;
+}
+ border-radius: 5px; 
 `

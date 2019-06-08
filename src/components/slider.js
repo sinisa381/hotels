@@ -106,7 +106,7 @@ justify-content:center;
 margin:0 auto;
 margin-top:1rem;
 button {
-  background-color:${colors.blue};
+  background-color:${colors['light-silver']};
   padding:5px;
   border-radius:100px;
   border:none;
@@ -116,6 +116,6 @@ button {
 
 .carousel__dot--selected
  {
-  background-color:${colors['near-black']};
+  background-color:${colors.blue};
 }
 `
