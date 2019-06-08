@@ -16,26 +16,30 @@ export default () => {
 		setFeaturedRooms(featured)
 		setSortedRooms(response)
 	}, [])
-	const context = useContext(RoomContext)
-	const setRooms = context.setRooms
-	const rooms = context
-	const featuredRooms = context.featuredRooms
-	const setFeaturedRooms = context.setFeaturedRooms
-	const sortedRooms = context.sortedRooms
-	const setSortedRooms = context.setSortedRooms
-	const formdata = context.formdata
-	const setFormdata = context.setFormdata
-	const handleChange = context.handleChange
+	const {
+		setRooms,
+		rooms,
+		featuredRooms,
+		setFeaturedRooms,
+		sortedRooms,
+		setSortedRooms,
+		formdata,
+		setFormdata,
+		handleChange
+	} = useContext(RoomContext)
+	let capacity, price, minPrice, maxPrice, minSize, maxSize, breakfast, pets, type
+	if (formdata) {
+		capacity = formdata.capacity
+		price = formdata.price
+		minPrice = formdata.minPrice
+		maxPrice = formdata.maxPrice
+		minSize = formdata.minSize
+		maxSize = formdata.maxSize
+		breakfast = formdata.breakfast
+		pets = formdata.pets
+		type = formdata.type
+	}
 
-	const capacity = formdata.capacity
-	const price = formdata.price
-	const minPrice = formdata.minPrice
-	const maxPrice = formdata.maxPrice
-	const minSize = formdata.minSize
-	const maxSize = formdata.maxSize
-	const breakfast = formdata.breakfast
-	const pets = formdata.pets
-	const type = formdata.type
 	const tempResponse = roomData()
 	const response = tempResponse.map(({ node }) => {
 		const room = {
