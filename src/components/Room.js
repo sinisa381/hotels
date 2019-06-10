@@ -8,7 +8,7 @@ import { colors } from '../globals/colors'
 
 export default ({ room }) => {
 	return (
-		<Container linkTo={'sinisa'}>
+		<Container>
 			<Image fixed={room.images[0]} alt={room.name} />
 			<Text color='green' bg='blacks.8' p='2'>
 				$ {room.price}

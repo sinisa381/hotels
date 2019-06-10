@@ -1,38 +1,67 @@
-import React, { useState } from 'react'
+import React, { Component } from 'react'
+const RoomContext = React.createContext()
 
-const initialstate = {
-	rooms: [],
-	sortedRooms: [],
-	featuredRooms: []
-}
-const formData = {
-	type: 'all',
-	capacity: 1,
-	price: 0,
-	minPrice: 10,
-	maxPrice: 0,
-	minSize: 0,
-	maxSize: 0,
-	breakfast: false,
-	pets: false
-}
-const RoomContext = React.createContext(initialstate)
+export default class RoomProvider extends Component {
+	state = {
+		rooms: [],
+		sortedRooms: [],
+		featuredRooms: [],
+		//
+		type: 'all',
+		capacity: 1,
+		price: 0,
+		minPrice: 0,
+		maxPrice: 0,
+		minSize: 0,
+		maxSize: 0,
+		breakfast: false,
+		pets: false
+	}
 
-const RoomProvider = ({ children }) => {
-	const [ rooms, setRooms ] = useState([])
-	const [ sortedRooms, setSortedRooms ] = useState([])
-	const [ featuredRooms, setFeaturedRooms ] = useState([])
-	const [ formdata, setFormdata ] = useState(formData)
+	setRooms = ({ rooms, featuredRooms, sortedRooms, price, maxPrice, maxSize }) => {
+		this.setState({
+			rooms,
+			featuredRooms,
+			sortedRooms,
+			price,
+			maxPrice,
+			maxSize
+		})
+	}
+	componentDidMount() {
+		console.log('mounted')
+	}
 
-	const handleChange = event => {
+	formatData(items) {
+		return items.map(({ node }) => {
+			const room = {
+				...node,
+				images: node.images.map(({ fluid }) => fluid)
+			}
+			return room
+		})
+	}
+
+	resetData = () => {
+		this.setState({
+			sortedRooms: this.state.rooms
+		})
+	}
+
+	handleChange = event => {
 		const target = event.target
 		const value = target.type === 'checkbox' ? target.checked : target.value
 		const name = target.name
-		setFormdata({ ...formdata, [name]: value })
-		filterRooms()
+
+		this.setState(
+			{
+				[name]: value
+			},
+			this.filterRooms
+		)
 	}
-	const filterRooms = () => {
-		let { type, capacity, price, minSize, maxSize, breakfast, pets } = formdata
+	filterRooms = () => {
+		let { rooms, type, capacity, price, minSize, maxSize, breakfast, pets } = this.state
 
 		let tempRooms = [ ...rooms ]
 		capacity = parseInt(capacity)
@@ -51,25 +80,32 @@ const RoomProvider = ({ children }) => {
 		if (pets) {
 			tempRooms = tempRooms.filter(room => room.pets === true)
 		}
-		setSortedRooms(tempRooms)
+		this.setState({
+			sortedRooms: tempRooms
+		})
 	}
-	return (
-		<RoomContext.Provider
-			value={{
-				rooms,
-				setRooms,
-				featuredRooms,
-				setFeaturedRooms,
-				sortedRooms,
-				setSortedRooms,
-				formdata,
-				setFormdata,
-				handleChange
-			}}
-		>
-			{children}
-		</RoomContext.Provider>
-	)
+	render() {
+		return (
+			<RoomContext.Provider
+				value={{
+					...this.state,
+					handleChange: this.handleChange,
+					resetData: this.resetData,
+					formatData: this.formatData,
+					setRooms: this.setRooms
+				}}
+			>
+				{this.props.children}
+			</RoomContext.Provider>
+		)
+	}
 }
+const RoomConsumer = RoomContext.Consumer
 
-export { RoomProvider, RoomContext }
+export { RoomProvider, RoomConsumer, RoomContext }
+
+export function withRoomConsumer(Component) {
+	return function ConsumerWrapper(props) {
+		return <RoomConsumer>{value => <Component {...props} context={value} />}</RoomConsumer>
+	}
+}
