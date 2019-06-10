@@ -26,7 +26,7 @@ exports.createPages = ({ graphql, actions }) => {
 				}
 
 				result.data.allContentfulHotelrooms.edges.forEach(({ node }) => {
-					const path = `rooms/${node.slug}`
+					const path = `rooms${node.slug}`
 					createPage({
 						path,
 						component: blogPostTemplate,
