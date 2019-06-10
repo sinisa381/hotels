@@ -7,13 +7,14 @@ import { Link } from 'gatsby'
 import { colors } from '../globals/colors'
 
 export default ({ room }) => {
+	console.log(room.slug)
 	return (
 		<Container>
 			<Image fixed={room.images[0]} alt={room.name} />
 			<Text color='green' bg='blacks.8' p='2'>
 				$ {room.price}
 			</Text>
-			<LinkTo className='thelink' to={`/rooms/${room.slug}`}>
+			<LinkTo className='thelink' to={`/rooms/${room.slug}/`}>
 				{room.slug}
 			</LinkTo>
 		</Container>
