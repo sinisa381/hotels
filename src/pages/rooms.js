@@ -212,7 +212,7 @@ export default class Rooms extends React.Component {
 							</FormContainer>
 						</form>
 					</section>
-					<Gallery>{sortedRooms.map(room => <Room key={room.id} room={room} />)}</Gallery>
+					{sortedRooms && <Gallery>{sortedRooms.map(room => <Room key={room.id} room={room} />)}</Gallery>}
 					<Text color='white' bg='green'>
 						<Button variant='primary'>the button</Button>
 						<Button>the button</Button>
