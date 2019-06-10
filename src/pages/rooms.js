@@ -95,9 +95,10 @@ export default class Rooms extends React.Component {
 		// 	type = formdata.type
 		// }
 		//end
-		const getUnique = (items, value) => {
+		function getUnique(items, value) {
 			return new Set(items.map(item => item[value]))
 		}
+
 		let types = getUnique(rooms, 'type')
 		types = Array.from(types)
 		types = [ 'all', ...types ]
