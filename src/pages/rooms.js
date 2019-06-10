@@ -16,7 +16,10 @@ export default class Rooms extends React.Component {
 			setRooms = this.context.setRooms
 			formatData = this.context.formatData
 		}
-		let roomsdata = this.props.data.data.edges
+		let roomsdata
+		if (this.props.data) {
+			roomsdata = this.props.data.data.edges
+		}
 		let rooms = formatData(roomsdata)
 		let featuredRooms = rooms.filter(room => room.featured === true)
 		//
