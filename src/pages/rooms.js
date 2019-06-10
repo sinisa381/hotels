@@ -11,10 +11,13 @@ import styled from '@emotion/styled'
 export default class Rooms extends React.Component {
 	static contextType = RoomContext
 	componentDidMount() {
-		const { setRooms, formatData } = this.context
+		let setRooms, formatData
+		if (this.context) {
+			setRooms = this.context.setRooms
+			formatData = this.context.formatData
+		}
 		let roomsdata = this.props.data.data.edges
 		let rooms = formatData(roomsdata)
-		console.log(rooms)
 		let featuredRooms = rooms.filter(room => room.featured === true)
 		//
 		let maxPrice = Math.max(...rooms.map(item => item.price))
@@ -22,8 +25,7 @@ export default class Rooms extends React.Component {
 		setRooms({ rooms, featuredRooms, sortedRooms: rooms, price: maxPrice, maxPrice, maxSize })
 	}
 	render() {
-		const {
-			sortedRooms,
+		let sortedRooms,
 			rooms,
 			resetData,
 			handleChange,
@@ -38,7 +40,23 @@ export default class Rooms extends React.Component {
 			type,
 			formatData,
 			setRooms
-		} = this.context
+		if (this.context) {
+			sortedRooms = this.context.sortedRooms
+			rooms = this.context.rooms
+			resetData = this.context.resetData
+			handleChange = this.context.handleChange
+			capacity = this.context.capacity
+			price = this.context.price
+			minPrice = this.context.minPrice
+			maxPrice = this.context.maxPrice
+			minSize = this.context.minSize
+			maxSize = this.context.maxSize
+			breakfast = this.context.breakfast
+			pets = this.context.pets
+			type = this.context.type
+			formatData = this.context.formatData
+			setRooms = this.context.setRooms
+		}
 		//start
 		// const getData = () => {
 		// 	let rooms = roomData()
