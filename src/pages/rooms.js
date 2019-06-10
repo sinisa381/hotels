@@ -19,7 +19,9 @@ export default class Rooms extends React.Component {
 		let roomsdata
 		if (this.props.data) {
 			if (this.props.data.allContentfulHotelrooms) {
-				roomsdata = this.props.data.allContentfulHotelrooms.edges
+				if (this.props.data.allContentfulHotelrooms.edges) {
+					roomsdata = this.props.data.allContentfulHotelrooms.edges
+				}
 			}
 		}
 		let rooms = formatData(roomsdata)
