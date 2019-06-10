@@ -264,7 +264,7 @@ ${mq[1]}{
  border-radius: 5px;
 `
 export const query = graphql`
-	{
+	query {
 		allContentfulHotelrooms {
 			edges {
 				node {
