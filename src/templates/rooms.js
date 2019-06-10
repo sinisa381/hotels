@@ -3,9 +3,11 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 
 export default props => {
-	const [ result ] = props.data.room.edges.map(({ node }) => node.slug)
+	let result
+	if (props.data) {
+		;[ result ] = props.data.room.edges.map(({ node }) => node.slug)
+	}
 	console.log(result)
-	console.log(props)
 
 	return <Layout>hello from {result}</Layout>
 }
