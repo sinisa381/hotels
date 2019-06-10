@@ -7,7 +7,6 @@ import { Link } from 'gatsby'
 import { colors } from '../globals/colors'
 
 export default ({ room }) => {
-	console.log(room.slug)
 	return (
 		<Container>
 			<Image fixed={room.images[0]} alt={room.name} />
