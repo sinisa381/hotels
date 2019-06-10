@@ -64,56 +64,28 @@ export default class Rooms extends React.Component {
 			formatData = this.context.formatData
 			setRooms = this.context.setRooms
 		}
-		//start
-		// const getData = () => {
-		// 	let rooms = roomData()
-		// 	rooms = formatData(rooms)
-		// 	let featuredRooms = rooms.filter(room => room.featured === true)
-		// 	//
-		// 	let maxPrice = Math.max(...rooms.map(item => item.price))
-		// 	let maxSize = Math.max(...rooms.map(item => item.size))
-		// 	setRooms({
-		// 		rooms,
-		// 		featuredRooms,
-		// 		sortedRooms: rooms,
-		// 		price: maxPrice,
-		// 		maxPrice,
-		// 		maxSize
-		// 	})
-		// }
-		// let capacity, price, minPrice, maxPrice, minSize, maxSize, breakfast, pets, type
-		// just because netlify cant recognize formdata
-		// if (formdata) {
-		// 	capacity = formdata.capacity
-		// 	price = formdata.price
-		// 	minPrice = formdata.minPrice
-		// 	maxPrice = formdata.maxPrice
-		// 	minSize = formdata.minSize
-		// 	maxSize = formdata.maxSize
-		// 	breakfast = formdata.breakfast
-		// 	pets = formdata.pets
-		// 	type = formdata.type
-		// }
-		//end
 		function getUnique(items, value) {
 			return new Set(items.map(item => item[value]))
 		}
 
-		let types = getUnique(rooms, 'type')
-		types = Array.from(types)
-		types = [ 'all', ...types ]
-		types = types.map((item, index) => (
-			<option key={index} value={item}>
-				{item}
-			</option>
-		))
-		let people = getUnique(rooms, 'capacity')
-		people = Array.from(people)
-		people = people.sort().map((item, index) => (
-			<option key={index} value={item}>
-				{item}
-			</option>
-		))
+		let types, people
+		if (rooms) {
+			types = getUnique(rooms, 'type')
+			types = Array.from(types)
+			types = [ 'all', ...types ]
+			types = types.map((item, index) => (
+				<option key={index} value={item}>
+					{item}
+				</option>
+			))
+			people = getUnique(rooms, 'capacity')
+			people = Array.from(people)
+			people = people.sort().map((item, index) => (
+				<option key={index} value={item}>
+					{item}
+				</option>
+			))
+		}
 
 		return (
 			<React.Fragment>
