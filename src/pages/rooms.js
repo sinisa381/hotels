@@ -39,7 +39,6 @@ export default class Rooms extends React.Component {
 			formatData,
 			setRooms
 		} = this.context
-		console.log(price)
 
 		// const getData = () => {
 		// 	let rooms = roomData()
