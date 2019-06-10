@@ -1,45 +1,45 @@
 import React from 'react'
-import { graphql } from 'gatsby'
-import Room from '../components/Room'
+// import { graphql } from 'gatsby'
+// import Room from '../components/Room'
 import Layout from '../components/layout'
-import '../components/styled.css'
-import { Card, Flex, Heading, Box, Text, Button } from '@rebass/emotion'
-import { RoomContext } from '../context'
-import { mq } from '../globals'
-import styled from '@emotion/styled'
+// import '../components/styled.css'
+// import { Card, Flex, Heading, Box, Text, Button } from '@rebass/emotion'
+// import { RoomContext } from '../context'
+// import { mq } from '../globals'
+// import styled from '@emotion/styled'
 
 export default class Rooms extends React.Component {
-	static contextType = RoomContext
+	// static contextType = RoomContext
 	componentDidMount() {
-		const { setRooms, formatData } = this.context
-		let roomsdata = this.props.data.data.edges
-		let rooms = formatData(roomsdata)
-		console.log(rooms)
-		let featuredRooms = rooms.filter(room => room.featured === true)
-		//
-		let maxPrice = Math.max(...rooms.map(item => item.price))
-		let maxSize = Math.max(...rooms.map(item => item.size))
-		setRooms({ rooms, featuredRooms, sortedRooms: rooms, price: maxPrice, maxPrice, maxSize })
+		// const { setRooms, formatData } = this.context
+		// let roomsdata = this.props.data.data.edges
+		// let rooms = formatData(roomsdata)
+		// console.log(rooms)
+		// let featuredRooms = rooms.filter(room => room.featured === true)
+		// //
+		// let maxPrice = Math.max(...rooms.map(item => item.price))
+		// let maxSize = Math.max(...rooms.map(item => item.size))
+		// setRooms({ rooms, featuredRooms, sortedRooms: rooms, price: maxPrice, maxPrice, maxSize })
 	}
 	render() {
-		const {
-			sortedRooms,
-			rooms,
-			resetData,
-			handleChange,
-			capacity,
-			price,
-			minPrice,
-			maxPrice,
-			minSize,
-			maxSize,
-			breakfast,
-			pets,
-			type,
-			formatData,
-			setRooms
-		} = this.context
-
+		// const {
+		// 	sortedRooms,
+		// 	rooms,
+		// 	resetData,
+		// 	handleChange,
+		// 	capacity,
+		// 	price,
+		// 	minPrice,
+		// 	maxPrice,
+		// 	minSize,
+		// 	maxSize,
+		// 	breakfast,
+		// 	pets,
+		// 	type,
+		// 	formatData,
+		// 	setRooms
+		// } = this.context
+		//start
 		// const getData = () => {
 		// 	let rooms = roomData()
 		// 	rooms = formatData(rooms)
@@ -69,29 +69,31 @@ export default class Rooms extends React.Component {
 		// 	pets = formdata.pets
 		// 	type = formdata.type
 		// }
-		const getUnique = (items, value) => {
-			return new Set(items.map(item => item[value]))
-		}
-		let types = getUnique(rooms, 'type')
-		types = Array.from(types)
-		types = [ 'all', ...types ]
-		types = types.map((item, index) => (
-			<option key={index} value={item}>
-				{item}
-			</option>
-		))
-		let people = getUnique(rooms, 'capacity')
-		people = Array.from(people)
-		people = people.sort().map((item, index) => (
-			<option key={index} value={item}>
-				{item}
-			</option>
-		))
+		//end
+		// const getUnique = (items, value) => {
+		// 	return new Set(items.map(item => item[value]))
+		// }
+		// let types = getUnique(rooms, 'type')
+		// types = Array.from(types)
+		// types = [ 'all', ...types ]
+		// types = types.map((item, index) => (
+		// 	<option key={index} value={item}>
+		// 		{item}
+		// 	</option>
+		// ))
+		// let people = getUnique(rooms, 'capacity')
+		// people = Array.from(people)
+		// people = people.sort().map((item, index) => (
+		// 	<option key={index} value={item}>
+		// 		{item}
+		// 	</option>
+		// ))
 
 		return (
 			<React.Fragment>
 				<Layout>
-					<Box mx='auto' mt='2' width={400}>
+					<div>hello world</div>
+					{/* <Box mx='auto' mt='2' width={400}>
 						<Heading m='3' color='blue' fontFamily='sans' textAlign='center'>
 							Find your place
 						</Heading>
@@ -217,57 +219,57 @@ export default class Rooms extends React.Component {
 					<Text color='white' bg='green'>
 						<Button variant='primary'>the button</Button>
 						<Button>the button</Button>
-					</Text>
+					</Text> */}
 				</Layout>
 			</React.Fragment>
 		)
 	}
 }
 
-const Gallery = styled(Box)`
-height:80vh;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-grid-gap:10px;
-`
-const FormContainer = styled(Box)`
-width:100%;
-${mq[1]}{
- width: 35rem;
-}
- border-radius: 5px; 
-`
-export const query = graphql`
-	{
-		data: allContentfulHotelrooms {
-			edges {
-				node {
-					id
-					images {
-						fluid(maxWidth: 1000) {
-							...GatsbyContentfulFluid
-							src
-							srcSet
-						}
-					}
-					name
-					pets
-					price
-					size
-					slug
-					capacity
-					id
-					type
-					featured
-					extras {
-						content
-					}
-					description {
-						description
-					}
-					breakfast
-				}
-			}
-		}
-	}
-`
+// const Gallery = styled(Box)`
+// height:80vh;
+// display:grid;
+// grid-template-columns:repeat(3,1fr);
+// grid-gap:10px;
+// `
+// const FormContainer = styled(Box)`
+// width:100%;
+// ${mq[1]}{
+//  width: 35rem;
+// }
+//  border-radius: 5px;
+// `
+// export const query = graphql`
+// 	{
+// 		data: allContentfulHotelrooms {
+// 			edges {
+// 				node {
+// 					id
+// 					images {
+// 						fluid(maxWidth: 1000) {
+// 							...GatsbyContentfulFluid
+// 							src
+// 							srcSet
+// 						}
+// 					}
+// 					name
+// 					pets
+// 					price
+// 					size
+// 					slug
+// 					capacity
+// 					id
+// 					type
+// 					featured
+// 					extras {
+// 						content
+// 					}
+// 					description {
+// 						description
+// 					}
+// 					breakfast
+// 				}
+// 			}
+// 		}
+// 	}
+// `
