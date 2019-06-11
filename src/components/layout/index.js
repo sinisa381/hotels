@@ -3,7 +3,7 @@ import Header from '../header'
 import Footer from '../footer'
 import Helmet from 'react-helmet'
 
-import { Box } from '@rebass/emotion'
+import { Box, Flex } from '@rebass/emotion'
 
 export default ({ children }) => {
 	return (
@@ -15,9 +15,11 @@ export default ({ children }) => {
 					href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
 				/>
 			</Helmet>
-			<Header />
-			<Box pt='5'>{children}</Box>
-			<Footer />
+			<Flex alignItems='space-between' flexDirection='column'>
+				<Header />
+				<Box pt='5'>{children}</Box>
+				<Footer />
+			</Flex>
 		</React.Fragment>
 	)
 }

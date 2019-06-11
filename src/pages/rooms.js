@@ -215,10 +215,6 @@ export default class Rooms extends React.Component {
 						</form>
 					</section>
 					{sortedRooms && <Gallery>{sortedRooms.map(room => <Room key={room.id} room={room} />)}</Gallery>}
-					<Text color='white' bg='green'>
-						<Button variant='primary'>the button</Button>
-						<Button>the button</Button>
-					</Text>
 				</Layout>
 			</React.Fragment>
 		)

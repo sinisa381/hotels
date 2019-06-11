@@ -39,8 +39,10 @@ export default () => {
 							</Stars>
 							<Text mb='2'>We offer best services</Text>
 							<Text color='whites.8'>
-								<FaPhone style={{ marginRight: 16 }} />
-								000-000-000
+								<Flex justifyContent='center' alignItems='center'>
+									<FaPhone />
+									<Text ml='10px'>000-000-000</Text>
+								</Flex>
 							</Text>
 						</Heading>
 					</Card>
