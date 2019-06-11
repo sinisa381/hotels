@@ -17,7 +17,7 @@ export default () => {
 							Accept payments with:
 						</Heading>
 						<Box>
-							<Text color='yellow'>
+							<Text color='whites.8'>
 								<Payment px='4' py='3'>
 									<FaBitcoin />
 									<FaDollarSign />
@@ -27,7 +27,36 @@ export default () => {
 							</Text>
 						</Box>
 					</Card>
-
+					<Card bg='green' width={[ 256, 320 ]} p='3' borderRadius='2' mb='3' mr='2'>
+						<Heading fontFamily='sans' textAlign='center' color='blacks.8'>
+							Accept payments with:
+						</Heading>
+						<Box>
+							<Text color='whites.8'>
+								<Payment px='4' py='3'>
+									<FaBitcoin />
+									<FaDollarSign />
+									<FaPaypal />
+									<FaStripe />
+								</Payment>
+							</Text>
+						</Box>
+					</Card>
+					<Card bg='green' width={[ 256, 320 ]} p='3' borderRadius='2' mb='3' mr='2'>
+						<Heading fontFamily='sans' textAlign='center' color='blacks.8'>
+							Accept payments with:
+						</Heading>
+						<Box>
+							<Text color='whites.8'>
+								<Payment px='4' py='3'>
+									<FaBitcoin />
+									<FaDollarSign />
+									<FaPaypal />
+									<FaStripe />
+								</Payment>
+							</Text>
+						</Box>
+					</Card>
 					<Card bg='green' width={[ 256, 320 ]} p='3' borderRadius='2' mb='3'>
 						<Heading fontFamily='sans' textAlign='center' color='blacks.8'>
 							<Stars color='yellow' px='2'>

@@ -2,8 +2,8 @@ import React from 'react'
 import Header from '../header'
 import Footer from '../footer'
 import Helmet from 'react-helmet'
-
-import { Box, Flex } from '@rebass/emotion'
+import styled from '@emotion/styled'
+import { Box } from '@rebass/emotion'
 
 export default ({ children }) => {
 	return (
@@ -15,11 +15,13 @@ export default ({ children }) => {
 					href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
 				/>
 			</Helmet>
-			<Flex alignItems='space-between' flexDirection='column'>
-				<Header />
-				<Box pt='5'>{children}</Box>
-				<Footer />
-			</Flex>
+			<Header />
+			<Box pt='5'>
+				<Vh>{children}</Vh>
+			</Box>
+			<Footer />
 		</React.Fragment>
 	)
 }
+
+const Vh = styled.div`min-height: calc(100vh - 132px);`
