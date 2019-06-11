@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import '../components/styled.css'
 import Swiper from '../components/slider'
 import styled from '@emotion/styled'
+import { colors } from '../globals/colors'
 import { Flex, Box, Text, Card, Heading } from '@rebass/emotion'
 import { FaStar, FaBitcoin, FaDollarSign, FaPaypal, FaStripe, FaPhone } from 'react-icons/fa'
 
@@ -12,7 +13,7 @@ export default () => {
 			<Layout>
 				<Swiper />
 				<Flex justifyContent='space-around' flexWrap='wrap' mt={[ 4, 5, 6 ]}>
-					<Card bg='green' width={[ 256, 320 ]} p='3' borderRadius='2' mb='3' mr='2'>
+					<Card bg={colors.green} width={[ 256, 320 ]} p='3' borderRadius='2' mb='3' mr='2'>
 						<Heading fontFamily='sans' textAlign='center' color='blacks.8'>
 							Accept payments with:
 						</Heading>
@@ -27,7 +28,7 @@ export default () => {
 							</Text>
 						</Box>
 					</Card>
-					<Card bg='green' width={[ 256, 320 ]} p='3' borderRadius='2' mb='3' mr='2'>
+					<Card bg={colors.green} width={[ 256, 320 ]} p='3' borderRadius='2' mb='3' mr='2'>
 						<Heading fontFamily='sans' textAlign='center' color='blacks.8'>
 							Accept payments with:
 						</Heading>
@@ -42,7 +43,7 @@ export default () => {
 							</Text>
 						</Box>
 					</Card>
-					<Card bg='green' width={[ 256, 320 ]} p='3' borderRadius='2' mb='3' mr='2'>
+					<Card bg={colors.green} width={[ 256, 320 ]} p='3' borderRadius='2' mb='3' mr='2'>
 						<Heading fontFamily='sans' textAlign='center' color='blacks.8'>
 							Accept payments with:
 						</Heading>
