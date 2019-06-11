@@ -1,7 +1,9 @@
 import React from 'react'
-import { Box, Text as Txt } from '@rebass/emotion'
+import { Flex, Box, Text } from '@rebass/emotion'
 import { mq } from '../globals'
 import Img from 'gatsby-image'
+import { Abbr } from './shared'
+
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { colors } from '../globals/colors'
@@ -9,14 +11,30 @@ import { colors } from '../globals/colors'
 export default ({ room }) => {
 	return (
 		<Container>
-			<Image fixed={room.images[0]} alt={room.name} />
-			<Text color='green' bg='blacks.8' p='2'>
-				$ {room.price}
-			</Text>
+			<Abbr title={room.name}>
+				<Image fixed={room.images[0]} alt={room.name} />
+			</Abbr>
+			<Overlay>
+				<Flex justifyContent='space-between' px='4' py='2'>
+					<Text color={colors.whites[9]} fontFamily='sans' fontSize={[ 2, 3, 3 ]}>
+						{room.slug}
+					</Text>
+					<Text color='green' fontSize={[ 1, 2, 3 ]}>
+						$ {room.price}
+					</Text>
+				</Flex>
+			</Overlay>
+
 			<LinkTo className='thelink' to={`/rooms/${room.slug}/`}>
-				{room.slug}
+				<Text fontSize={[ 2, 2, 3 ]} fontFamily='sans'>
+					details
+				</Text>
 			</LinkTo>
-			<Mobile to={`/rooms/${room.slug}`}>{room.slug}</Mobile>
+			<Mobile to={`/rooms/${room.slug}`}>
+				<Text fontSize={[ 3 ]} textAlign='center' fontFamily='sans'>
+					details
+				</Text>
+			</Mobile>
 		</Container>
 	)
 }
@@ -38,46 +56,40 @@ position:relative;
   }
 }
 `
-const Text = styled(Txt)`
-position:absolute;
-top:0;
-right:0;
-border-radius:3px;
-`
 
 const Mobile = styled(Link)`
-display:block;
-box-sizing:border-box;
 opacity:1;
 text-decoration:none;
-font-weight:400;
-font-size:1.4rem;
-color:${colors.gold};
-text-shadow:0 0 4px rgba(0, 0, 0, .125);
+font-weight:bold;
+color:${colors.whites[9]};
+border-bottom:2px solid ${colors.whites[9]};
 position:absolute;
 top:45%;
 left:50%;
 transform:translate(-50%);
-background-color:${colors.blacks[4]};
-padding:.3rem .9rem;
 ${mq[1]}{
   display:none;
 }
 `
 
 const LinkTo = styled(Link)`
-box-sizing:border-box;
 opacity:0;
 text-decoration:none;
 font-weight:400;
-font-size:1.4rem;
-color:${colors.gold};
-text-shadow:0 0 4px rgba(0, 0, 0, .125);
+color:${colors.whites[9]};
+border-bottom:2px solid ${colors.whites[9]};
+font-weight:bold;
+text-shadow:0 0 4px rgba(0, 0, 0, .325);
 position:absolute;
 top:45%;
 left:50%;
 transform:translate(-50%);
-background-color:${colors.blacks[4]};
-padding:.3rem .9rem;
 
+`
+const Overlay = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: ${colors.blacks[7]};
 `

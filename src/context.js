@@ -39,12 +39,6 @@ export default class RoomProvider extends Component {
 		})
 	}
 
-	resetData = () => {
-		this.setState({
-			sortedRooms: this.state.rooms
-		})
-	}
-
 	handleRange = (e, value) => {
 		this.setState({ price: Math.floor(value) }, this.filterRooms)
 	}

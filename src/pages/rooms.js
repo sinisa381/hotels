@@ -32,15 +32,12 @@ export default class Rooms extends React.Component {
 		}
 		let rooms = formatData(roomsdata)
 		let featuredRooms = rooms.filter(room => room.featured === true)
-		//
 		let maxPrice = Math.max(...rooms.map(item => item.price))
-		let maxSize = Math.max(...rooms.map(item => item.size))
 		setRooms({ rooms, featuredRooms, sortedRooms: rooms, price: maxPrice, maxPrice })
 	}
 	render() {
 		let sortedRooms,
 			rooms,
-			resetData,
 			handleChange,
 			handleRange,
 			capacity,
@@ -55,7 +52,6 @@ export default class Rooms extends React.Component {
 		if (this.context) {
 			sortedRooms = this.context.sortedRooms
 			rooms = this.context.rooms
-			resetData = this.context.resetData
 			handleChange = this.context.handleChange
 			handleRange = this.context.handleRange
 			capacity = this.context.capacity
@@ -71,7 +67,6 @@ export default class Rooms extends React.Component {
 		function getUnique(items, value) {
 			return new Set(items.map(item => item[value]))
 		}
-		console.log(rooms)
 		let types, people
 		if (rooms) {
 			types = getUnique(rooms, 'type')
@@ -94,27 +89,21 @@ export default class Rooms extends React.Component {
 		return (
 			<React.Fragment>
 				<Layout>
-					<Box mx='auto' mt='2' width={300} justifyContent='center'>
-						<Heading m='3' color='blue' fontFamily='sans' textAlign='center'>
+					<Box mx='auto' mt='2' justifyContent='center'>
+						<Heading
+							m='3'
+							color={colors.blacks[9]}
+							fontSize={[ 3, 3, 4 ]}
+							fontFamily='sans'
+							textAlign='center'
+						>
 							Find your place
 						</Heading>
-						<Flex>
-							<Button
-								textAlign='center'
-								mb={[ 2, 2, 2 ]}
-								mx='auto'
-								display='inline-block'
-								variant='outline'
-								onClick={() => resetData()}
-							>
-								Refresh data
-							</Button>
-						</Flex>
 					</Box>
 
 					<section>
 						<form>
-							<FormContainer bg='transparent' mx='auto' my='3' px={[ 5, 5, 6 ]} py='3'>
+							<FormContainer bg='transparent' mx='auto' my='3' px={[ 3, 3, 3 ]} py='3'>
 								<Card mb={[ 2, 2, 3 ]}>
 									<Flex alignItems='center' justifyContent='space-between' px={[ 1, 2, 3 ]}>
 										<Flex>
@@ -198,7 +187,9 @@ export default class Rooms extends React.Component {
 													type='checkbox'
 													id='breakfast'
 												/>
-												<Text mx='1'>Breakfast</Text>
+												<Text mx='1' fontSize={[ 2, 2, 3 ]} fontFamily='sans'>
+													Breakfast
+												</Text>
 											</Flex>
 										</Box>
 										<Box mr={[ 2, 3, 3 ]}>
@@ -212,7 +203,9 @@ export default class Rooms extends React.Component {
 													id='pets'
 												/>
 												<label htmlFor='pets'>
-													<Text mx='1'>Pets</Text>{' '}
+													<Text mx='1' fontSize={[ 2, 2, 3 ]} fontFamily='sans'>
+														Pets
+													</Text>{' '}
 												</label>
 											</Flex>
 										</Box>
@@ -234,7 +227,6 @@ export default class Rooms extends React.Component {
 
 const Gallery = styled.div`
 	min-height: 70vh;
-	/* width: 100%; */
 	display: grid;
 	justify-content: center;
 	width: 100%;
@@ -248,8 +240,13 @@ const Gallery = styled.div`
 `
 const FormContainer = styled(Box)`
 width:100%;
+max-width:25rem;
+box-sizing:border-box;
+@media only screen and (max-width:407px){
+padding:0 10px;
+}
 ${mq[1]}{
- width: 35rem;
+ width: 25rem;
 }
  border-radius: 5px;
 `
@@ -286,24 +283,4 @@ export const query = graphql`
 			}
 		}
 	}
-`
-const Select = styled.select`margin-top: 5px;`
-const Input = styled.input`width: 60px;`
-const Checkboxstyled = styled(Checkbox)`
-background-color:red;
-color:${colors.black}!important;
-`
-const Sliderstyled = styled(Slider)`
-width:8rem !important;
-background-color:${colors.black}!important;
-.MuiSlider-track{
-
-background-color:${colors.black}!important;
-}
-button {
-  background-color:${colors.black}!important;
-}
-.MuiSlider-thumb.Mui-focused, .MuiSlider-thumb:hover,.MuiSlider-thumb:active, .MuiSlider-thumb.selected  {
-    box-shadow: 0px 0px 0px 9px rgba(0, 0, 0, 0.16)!important;
-}
 `
