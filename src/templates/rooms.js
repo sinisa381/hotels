@@ -3,7 +3,7 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import Img from 'gatsby-image'
-import { Box, Flex } from '@rebass/emotion'
+import { Box, Flex, Text } from '@rebass/emotion'
 
 export default props => {
 	let result, room, capacity, price, breakfast, pets, type, name, size, images, description, extras, defaultImg, rest
@@ -22,13 +22,52 @@ export default props => {
 		;[ defaultImg, ...rest ] = images
 		;[ result ] = props.data.room.edges.map(({ node }) => node.slug)
 	}
+	console.log(rest)
 
 	return (
 		<Layout>
 			<Flex flexDirection='column' justifyContent='space-between' alignItems='space-between'>
-				<Img fluid={defaultImg} width={300} height={300} />
-				<Box>item1</Box>
-				<Box>item2</Box>
+				<MaxHeight>
+					<Image fluid={defaultImg} />
+				</MaxHeight>
+				<Box>
+					<Text
+						fontSize={[ 2, 3, 4 ]}
+						fontFamily='sans'
+						width='80%'
+						mx='auto'
+						mb='4'
+						mt='2'
+						lineHeight='copy'
+					>
+						{description}
+					</Text>
+				</Box>
+				<Box>
+					{images.length > 1 &&
+						rest.map((image, i) => (
+							<ImgContainer>
+								<Image fluid={image} key={i} />
+							</ImgContainer>
+						))}
+					<Flex>
+						<Box>
+							<Text ml='3'>We also have:</Text>
+							{extras.map((item, i) => (
+								<ul>
+									<li>
+										<Text key={i}>{item}</Text>
+									</li>
+								</ul>
+							))}
+						</Box>
+						<ul>
+							{pets && <li>pets are allowed</li>}
+							{breakfast && <li>breakfast is included</li>}
+							<li>room size is: {size}</li>
+						</ul>
+					</Flex>
+				</Box>
 			</Flex>
 		</Layout>
 	)
@@ -67,4 +106,13 @@ export const query = graphql`
 			}
 		}
 	}
+`
+const MaxHeight = styled.div`height: 80vh;`
+const Image = styled(Img)`
+width:100%;
+height:100%;
+`
+const ImgContainer = styled.div`
+	height: 10rem;
+	width: 18rem;
 `
