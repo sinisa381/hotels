@@ -16,19 +16,20 @@ export default ({ room }) => {
 			<LinkTo className='thelink' to={`/rooms/${room.slug}/`}>
 				{room.slug}
 			</LinkTo>
+			<Mobile to={`/rooms/${room.slug}`}>{room.slug}</Mobile>
 		</Container>
 	)
 }
 
 const Image = styled(Img)`
 width:100%;
+display:block;
 height:100%;
 border-radius:4px;
 `
 const Container = styled(Box)`
 width:100%;
-height:100%;
-min-height:15rem;
+height:15rem;
 position:relative;
 &:hover{
   .thelink{
@@ -42,6 +43,26 @@ position:absolute;
 top:0;
 right:0;
 border-radius:3px;
+`
+
+const Mobile = styled(Link)`
+display:block;
+box-sizing:border-box;
+opacity:1;
+text-decoration:none;
+font-weight:400;
+font-size:1.4rem;
+color:${colors.gold};
+text-shadow:0 0 4px rgba(0, 0, 0, .125);
+position:absolute;
+top:45%;
+left:50%;
+transform:translate(-50%);
+background-color:${colors.blacks[4]};
+padding:.3rem .9rem;
+${mq[1]}{
+  display:none;
+}
 `
 
 const LinkTo = styled(Link)`

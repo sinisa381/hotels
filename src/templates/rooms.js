@@ -7,7 +7,6 @@ export default props => {
 	if (props.data) {
 		;[ result ] = props.data.room.edges.map(({ node }) => node.slug)
 	}
-	console.log(result)
 
 	return <Layout>hello from {result}</Layout>
 }

@@ -48,6 +48,10 @@ export default class RoomProvider extends Component {
 		})
 	}
 
+	handleRange = (e, value) => {
+		this.setState({ price: Math.floor(value) }, this.filterRooms)
+	}
+
 	handleChange = event => {
 		const target = event.target
 		const value = target.type === 'checkbox' ? target.checked : target.value
@@ -92,7 +96,8 @@ export default class RoomProvider extends Component {
 					handleChange: this.handleChange,
 					resetData: this.resetData,
 					formatData: this.formatData,
-					setRooms: this.setRooms
+					setRooms: this.setRooms,
+					handleRange: this.handleRange
 				}}
 			>
 				{this.props.children}
