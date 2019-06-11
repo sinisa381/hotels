@@ -58,7 +58,7 @@ export default () => {
 							</Text>
 						</Box>
 					</Card>
-					<Card bg='green' width={[ 256, 320 ]} p='3' borderRadius='2' mb='3'>
+					<Card bg={colors.green} width={[ 256, 320 ]} p='3' borderRadius='2' mb='3'>
 						<Heading fontFamily='sans' textAlign='center' color='blacks.8'>
 							<Stars color='yellow' px='2'>
 								<FaStar />
