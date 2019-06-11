@@ -12,20 +12,17 @@ export default class RoomProvider extends Component {
 		price: 0,
 		minPrice: 0,
 		maxPrice: 0,
-		minSize: 0,
-		maxSize: 0,
 		breakfast: false,
 		pets: false
 	}
 
-	setRooms = ({ rooms, featuredRooms, sortedRooms, price, maxPrice, maxSize }) => {
+	setRooms = ({ rooms, featuredRooms, sortedRooms, price, maxPrice }) => {
 		this.setState({
 			rooms,
 			featuredRooms,
 			sortedRooms,
 			price,
-			maxPrice,
-			maxSize
+			maxPrice
 		})
 	}
 	componentDidMount() {
@@ -65,7 +62,7 @@ export default class RoomProvider extends Component {
 		)
 	}
 	filterRooms = () => {
-		let { rooms, type, capacity, price, minSize, maxSize, breakfast, pets } = this.state
+		let { rooms, type, capacity, price, breakfast, pets } = this.state
 
 		let tempRooms = [ ...rooms ]
 		capacity = parseInt(capacity)
@@ -77,7 +74,6 @@ export default class RoomProvider extends Component {
 			tempRooms = tempRooms.filter(room => room.capacity >= capacity)
 		}
 		tempRooms = tempRooms.filter(room => room.price <= price)
-		tempRooms = tempRooms.filter(room => room.size >= minSize && room.size <= maxSize)
 		if (breakfast) {
 			tempRooms = tempRooms.filter(room => room.breakfast === true)
 		}

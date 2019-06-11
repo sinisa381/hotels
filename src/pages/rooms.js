@@ -11,6 +11,8 @@ import styled from '@emotion/styled'
 import Checkbox from '@material-ui/core/Checkbox'
 import Slider from '@material-ui/lab/Slider'
 import MuiSelect from '@material-ui/core/Select'
+import { FaBed } from 'react-icons/fa'
+import { IoMdPersonAdd, IoMdPricetag } from 'react-icons/io'
 
 export default class Rooms extends React.Component {
 	static contextType = RoomContext
@@ -33,7 +35,7 @@ export default class Rooms extends React.Component {
 		//
 		let maxPrice = Math.max(...rooms.map(item => item.price))
 		let maxSize = Math.max(...rooms.map(item => item.size))
-		setRooms({ rooms, featuredRooms, sortedRooms: rooms, price: maxPrice, maxPrice, maxSize })
+		setRooms({ rooms, featuredRooms, sortedRooms: rooms, price: maxPrice, maxPrice })
 	}
 	render() {
 		let sortedRooms,
@@ -45,8 +47,6 @@ export default class Rooms extends React.Component {
 			price,
 			minPrice,
 			maxPrice,
-			minSize,
-			maxSize,
 			breakfast,
 			pets,
 			type,
@@ -62,8 +62,6 @@ export default class Rooms extends React.Component {
 			price = this.context.price
 			minPrice = this.context.minPrice
 			maxPrice = this.context.maxPrice
-			minSize = this.context.minSize
-			maxSize = this.context.maxSize
 			breakfast = this.context.breakfast
 			pets = this.context.pets
 			type = this.context.type
@@ -73,7 +71,7 @@ export default class Rooms extends React.Component {
 		function getUnique(items, value) {
 			return new Set(items.map(item => item[value]))
 		}
-
+		console.log(rooms)
 		let types, people
 		if (rooms) {
 			types = getUnique(rooms, 'type')
@@ -116,14 +114,17 @@ export default class Rooms extends React.Component {
 
 					<section>
 						<form>
-							<FormContainer bg='transparent' mx='auto' my='3' px='6' py='3'>
+							<FormContainer bg='transparent' mx='auto' my='3' px={[ 5, 5, 6 ]} py='3'>
 								<Card mb={[ 2, 2, 3 ]}>
-									<Flex alignItems='center' justifyContent='space-around'>
-										<label htmlFor='type'>
-											<Text mr='2' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
-												Room type
-											</Text>
-										</label>
+									<Flex alignItems='center' justifyContent='space-between' px={[ 1, 2, 3 ]}>
+										<Flex>
+											<label htmlFor='type'>
+												<Text mr='3' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+													Room type
+												</Text>
+											</label>
+											<FaBed size='30' color={colors.blacks[9]} />
+										</Flex>
 										<MuiSelect
 											native
 											value={type}
@@ -138,12 +139,15 @@ export default class Rooms extends React.Component {
 									</Flex>
 								</Card>
 								<Card mb={[ 2, 2, 3 ]}>
-									<Flex alignItems='center' justifyContent='space-around'>
-										<label htmlFor='capacity'>
-											<Text mr='2' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
-												Guests
-											</Text>
-										</label>
+									<Flex alignItems='center' justifyContent='space-between' px={[ 1, 2, 3 ]}>
+										<Flex alignItems='center'>
+											<label htmlFor='capacity'>
+												<Text mr='3' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+													Guests
+												</Text>
+											</label>
+											<IoMdPersonAdd size='27' color={colors.blacks[9]} />
+										</Flex>
 										<MuiSelect
 											native
 											value={capacity}
@@ -158,12 +162,15 @@ export default class Rooms extends React.Component {
 									</Flex>
 								</Card>
 								<Card mb={[ 2, 2, 3 ]}>
-									<Flex alignItems='center' justifyContent='space-around'>
-										<label htmlFor='price'>
-											<Text mr='2' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
-												Price ${price}
-											</Text>
-										</label>
+									<Flex alignItems='center' justifyContent='space-between' px={[ 1, 2, 3 ]}>
+										<Flex alignItems='center'>
+											<label htmlFor='price'>
+												<Text mr='3' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+													Price ${price}
+												</Text>
+											</label>
+											<IoMdPricetag size='26' color={colors.blacks[9]} />
+										</Flex>
 										<Box width={100}>
 											<Slider
 												type='range'
@@ -177,29 +184,7 @@ export default class Rooms extends React.Component {
 										</Box>
 									</Flex>
 								</Card>
-								<Card mb={[ 2, 2, 3 ]}>
-									<Flex alignItems='center' justifyContent='space-around'>
-										<label htmlFor='price'>
-											<Text mr='2' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
-												Room size
-											</Text>
-										</label>
-										<div className='size-inputs'>
-											<Input
-												type='number'
-												name='minSize'
-												value={minSize}
-												onChange={handleChange}
-											/>
-											<Input
-												type='number'
-												name='maxSize'
-												value={maxSize}
-												onChange={handleChange}
-											/>
-										</div>
-									</Flex>
-								</Card>
+								<Card mb={[ 2, 2, 3 ]} />
 								<Card>
 									<Flex justifyContent='center'>
 										<Box mr={[ 2, 3, 3 ]}>
