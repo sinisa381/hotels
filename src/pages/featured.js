@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
-import styled from '@emotion/styled'
-import { mq } from '../globals'
 import { Gallery, Container } from '../components/shared'
-import { Card, Box, Flex, Text, Heading } from '@rebass/emotion'
+import {  Box,  Text, Heading } from '@rebass/emotion'
 import Room from '../components/Room'
 
 export default ({ data }) => {

@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/layout'
-import '../components/styled.css'
 import Swiper from '../components/slider'
 import styled from '@emotion/styled'
 import { colors } from '../globals/colors'
