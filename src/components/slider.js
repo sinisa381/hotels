@@ -65,6 +65,7 @@ width:100%;
 height:100vh;
 `
 const Main = styled.div`
+	margin-top: -5px;
 	position: relative;
 	z-index: 1;
 `
