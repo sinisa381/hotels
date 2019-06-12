@@ -9,6 +9,7 @@ import { MdFreeBreakfast } from 'react-icons/md'
 import { IoIosResize } from 'react-icons/io'
 import { FaDog } from 'react-icons/fa'
 import { Card, Box, Flex, Text, Heading } from '@rebass/emotion'
+import { FaDollarSign } from 'react-icons/fa'
 
 export default props => {
 	let result, room, capacity, price, breakfast, pets, type, name, size, images, description, extras, defaultImg, rest
@@ -53,7 +54,7 @@ export default props => {
 						<Box my={[ 2, 4, 5 ]}>
 							{images.length > 1 && (
 								<Heading mb={[ 3, 4 ]} fontFamily='sans' fontSize={[ 3, 3, 4 ]}>
-									Aditional photoes
+									Aditional photos
 								</Heading>
 							)}
 							<Flex flexWrap='wrap'>
@@ -66,27 +67,48 @@ export default props => {
 							</Flex>
 						</Box>
 						<Info>
-							<Box mt='auto' mb={[ 5, 3, 2 ]}>
-								<Heading fontFamily='sans'>Room size</Heading>
-								<Flex alignItems='center'>
-									<IoIosResize size='25px' color='black' />
-									<Text ml='2'>{size}</Text>
-								</Flex>
-							</Box>
-
-							{/* <Circle bg='blacks.6' mt='auto'>
-								<Flex alignItems='center' flexDirection='column'>
-									<Text fontFamily='sans' lineHeight='copy' color='whites.9' fontWeight='bold'>
-										Room size:
-									</Text>
+							<Box mt='auto'>
+								<Box mb={[ 5, 3, 2 ]}>
 									<Flex alignItems='center'>
-										<IoIosResize size='25px' color={colors.whites[8]} />
-										<Text fontFamily='sans' ml='2' color='whites.8'>
+										<Heading fontFamily='sans' mr='2' lineHeight='title'>
+											Type {type}
+										</Heading>
+										<Flex alignItems='center' />
+									</Flex>
+								</Box>
+								<Box mb={[ 5, 3, 2 ]}>
+									<Flex alignItems='center'>
+										<Heading fontFamily='sans' mr='2' lineHeight='title'>
+											Capacity {capacity}
+										</Heading>
+										<Flex alignItems='center' />
+									</Flex>
+								</Box>
+								<Box mb={[ 5, 3, 2 ]}>
+									<Flex alignItems='center'>
+										<Heading fontFamily='sans' mr='2' lineHeight='title'>
+											Only
+										</Heading>
+										<Flex alignItems='center'>
+											<FaDollarSign size='20px' color={colors.green} />
+											<Text lineHeight='solid' fontFamily='sans' color={colors.green}>
+												{size}
+											</Text>
+										</Flex>
+									</Flex>
+								</Box>
+								<Box mb={[ 5, 3, 2 ]}>
+									<Heading fontFamily='sans' lineHeight='title'>
+										Room size
+									</Heading>
+									<Flex alignItems='center'>
+										<IoIosResize size='25px' color='black' />
+										<Text ml='2' lineHeight='solid'>
 											{size}
 										</Text>
 									</Flex>
-								</Flex>
-							</Circle> */}
+								</Box>
+							</Box>
 							<SmallCard borderRadius={8} boxShadow='normal'>
 								<Heading px='4' py='2' fontFamily='sans' fontSize='4' bg='light-blue' width={1}>
 									Extras:
@@ -175,19 +197,6 @@ const ImgContainer = styled.div`
 	height: 10rem;
 	width: 18rem;
 	margin-right: .4rem;
-`
-const Circle = styled(Card)`
-border-radius:100%;
-width:9rem;
-height:9rem;
-display:flex;
-justify-content:center;
-align-items:center;
-box-shadow:0 0 16px rgba(0, 0, 0, .25);
-@media only screen and (max-width:767px){
-margin:0 auto;
-margin-bottom:3rem;
-}
 `
 const Container = styled(Box)`
 width:90%;

@@ -8,22 +8,24 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { colors } from '../globals/colors'
 
-export default ({ room }) => {
+export default ({ room, price }) => {
 	return (
 		<Container>
 			<Abbr title={room.name}>
 				<Image fixed={room.images[0]} alt={room.name} />
 			</Abbr>
-			<Overlay>
-				<Flex justifyContent='space-between' px='4' py='2'>
-					<Text color={colors.whites[9]} fontFamily='sans' fontSize={[ 2, 3, 3 ]}>
-						{room.slug}
-					</Text>
-					<Text color='green' fontSize={[ 1, 2, 3 ]}>
-						$ {room.price}
-					</Text>
-				</Flex>
-			</Overlay>
+			{price && (
+				<Overlay>
+					<Flex justifyContent='space-between' px='4' py='2'>
+						<Text color={colors.whites[9]} fontFamily='sans' fontSize={[ 2, 3, 3 ]}>
+							{room.slug}
+						</Text>
+						<Text color='green' fontSize={[ 1, 2, 3 ]}>
+							$ {room.price}
+						</Text>
+					</Flex>
+				</Overlay>
+			)}
 
 			<LinkTo className='thelink' to={`/rooms/${room.slug}/`}>
 				<Text fontSize={[ 2, 2, 3 ]} fontFamily='sans'>

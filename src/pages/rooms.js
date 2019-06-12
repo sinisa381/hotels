@@ -5,6 +5,7 @@ import Layout from '../components/layout'
 import '../components/styled.css'
 import { colors } from '../globals/colors'
 import { Card, Flex, Heading, Box, Text, Button } from '@rebass/emotion'
+import { Gallery, Container } from '../components/shared'
 import { RoomContext } from '../context'
 import { mq } from '../globals'
 import styled from '@emotion/styled'
@@ -36,19 +37,7 @@ export default class Rooms extends React.Component {
 		setRooms({ rooms, featuredRooms, sortedRooms: rooms, price: maxPrice, maxPrice })
 	}
 	render() {
-		let sortedRooms,
-			rooms,
-			handleChange,
-			handleRange,
-			capacity,
-			price,
-			minPrice,
-			maxPrice,
-			breakfast,
-			pets,
-			type,
-			formatData,
-			setRooms
+		let sortedRooms, rooms, handleChange, handleRange, capacity, price, minPrice, maxPrice, breakfast, pets, type
 		if (this.context) {
 			sortedRooms = this.context.sortedRooms
 			rooms = this.context.rooms
@@ -61,8 +50,6 @@ export default class Rooms extends React.Component {
 			breakfast = this.context.breakfast
 			pets = this.context.pets
 			type = this.context.type
-			formatData = this.context.formatData
-			setRooms = this.context.setRooms
 		}
 		function getUnique(items, value) {
 			return new Set(items.map(item => item[value]))
@@ -214,26 +201,20 @@ export default class Rooms extends React.Component {
 							</FormContainer>
 						</form>
 					</section>
-					{sortedRooms && <Gallery>{sortedRooms.map(room => <Room key={room.id} room={room} />)}</Gallery>}
+					<Container>
+						{' '}
+						{sortedRooms && (
+							<Gallery>
+								{sortedRooms.map(room => <Room key={room.id} room={room} price={true} />)}
+							</Gallery>
+						)}
+					</Container>
 				</Layout>
 			</React.Fragment>
 		)
 	}
 }
 
-const Gallery = styled.div`
-	min-height: 70vh;
-	display: grid;
-	justify-content: center;
-	width: 100%;
-	margin: 0 auto;
-	grid-template-columns: repeat(auto-fill, minMax(5rem, 20rem));
-	grid-gap: 5px;
-	${mq[1]} {
-		width: 90%;
-		grid-gap: 10px;
-	}
-`
 const FormContainer = styled(Box)`
 width:100%;
 max-width:25rem;
@@ -251,7 +232,6 @@ export const query = graphql`
 		allContentfulHotelrooms {
 			edges {
 				node {
-					id
 					images {
 						fluid(maxWidth: 1000) {
 							...GatsbyContentfulFluid

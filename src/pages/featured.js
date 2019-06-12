@@ -1,80 +1,58 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
-import '../components/styled.css'
+import styled from '@emotion/styled'
+import { mq } from '../globals'
+import { Gallery, Container } from '../components/shared'
+import { Card, Box, Flex, Text, Heading } from '@rebass/emotion'
+import { RoomContext } from '../context'
+import Room from '../components/Room'
 
-export default () => (
-	<React.Fragment>
-		<Layout>
-			FEATURED sit amet consectetur adipisicing elit. Adipisci obcaecati similique deleniti tempora, ipsam a
-			ipsum, repellendus veniam nulla corporis voluptatibus error dicta veritatis nostrum eveniet perferendis ab
-			rerum incidunt? Ipsum saepe ullam fugit ad asperiores earum hic culpa excepturi expedita harum, mollitia
-			nisi impedit dolor. Vitae tempore error, porro enim blanditiis ipsum a id, ullam dolore ad quis ducimus. Rem
-			obcaecati odio facilis, vel repudiandae mollitia ducimus ex pariatur vitae beatae a eligendi, itaque autem
-			qui quaerat, dolor inventore voluptatibus accusantium voluptatum dolore eos asperiores! Tempora aliquam
-			blanditiis fugiat aut suscipit, alias itaque incidunt cumque nostrum facilis inventore reprehenderit dolore
-			obcaecati nulla ipsum quod at! Natus aut magni ut. Accusantium veritatis facilis, ea iusto facere
-			praesentium! Voluptatibus quidem nulla, labore quaerat esse sed veniam voluptas! Libero perspiciatis autem
-			aspernatur excepturi omnis laboriosam dolor, fugit rem officiis praesentium ex ipsa deleniti. A magnam
-			obcaecati, rem voluptas est ut molestiae at non tenetur sunt earum dicta doloribus, deserunt nemo? Suscipit
-			optio magni quidem tenetur aspernatur et sit molestias ullam tempore eum quisquam ad ex voluptates veritatis
-			laborum similique aperiam sequi soluta quos dicta, deleniti harum recusandae? Facere, porro a, ducimus,
-			cumque mollitia facilis distinctio recusandae iure et dolor possimus eaque nesciunt. Lorem ipsum dolor sit
-			amet consectetur adipisicing elit. Adipisci obcaecati similique deleniti tempora, ipsam a ipsum, repellendus
-			veniam nulla corporis voluptatibus error dicta veritatis nostrum eveniet perferendis ab rerum incidunt?
-			Ipsum saepe ullam fugit ad asperiores earum hic culpa excepturi expedita harum, mollitia nisi impedit dolor.
-			Vitae tempore error, porro enim blanditiis ipsum a id, ullam dolore ad quis ducimus. Rem obcaecati odio
-			facilis, vel repudiandae mollitia ducimus ex pariatur vitae beatae a eligendi, itaque autem qui quaerat,
-			dolor inventore voluptatibus accusantium voluptatum dolore eos asperiores! Tempora aliquam blanditiis fugiat
-			aut suscipit, alias itaque incidunt cumque nostrum facilis inventore reprehenderit dolore obcaecati nulla
-			ipsum quod at! Natus aut magni ut. Accusantium veritatis facilis, ea iusto facere praesentium! Voluptatibus
-			quidem nulla, labore quaerat esse sed veniam voluptas! Libero perspiciatis autem aspernatur excepturi omnis
-			laboriosam dolor, fugit rem officiis praesentium ex ipsa deleniti. A magnam obcaecati, rem voluptas est ut
-			molestiae at non tenetur sunt earum dicta doloribus, deserunt nemo? Suscipit optio magni quidem tenetur
-			aspernatur et sit molestias ullam tempore eum quisquam ad ex voluptates veritatis laborum similique aperiam
-			sequi soluta quos dicta, deleniti harum recusandae? Facere, porro a, ducimus, cumque mollitia facilis
-			distinctio recusandae iure et dolor possimus eaque nesciunt. Lorem ipsum dolor sit amet consectetur
-			adipisicing elit. Adipisci obcaecati similique deleniti tempora, ipsam a ipsum, repellendus veniam nulla
-			corporis voluptatibus error dicta veritatis nostrum eveniet perferendis ab rerum incidunt? Ipsum saepe ullam
-			fugit ad asperiores earum hic culpa excepturi expedita harum, mollitia nisi impedit dolor. Vitae tempore
-			error, porro enim blanditiis ipsum a id, ullam dolore ad quis ducimus. Rem obcaecati odio facilis, vel
-			repudiandae mollitia ducimus ex pariatur vitae beatae a eligendi, itaque autem qui quaerat, dolor inventore
-			voluptatibus accusantium voluptatum dolore eos asperiores! Tempora aliquam blanditiis fugiat aut suscipit,
-			alias itaque incidunt cumque nostrum facilis inventore reprehenderit dolore obcaecati nulla ipsum quod at!
-			Natus aut magni ut. Accusantium veritatis facilis, ea iusto facere praesentium! Voluptatibus quidem nulla,
-			labore quaerat esse sed veniam voluptas! Libero perspiciatis autem aspernatur excepturi omnis laboriosam
-			dolor, fugit rem officiis praesentium ex ipsa deleniti. A magnam obcaecati, rem voluptas est ut molestiae at
-			non tenetur sunt earum dicta doloribus, deserunt nemo? Suscipit optio magni quidem tenetur aspernatur et sit
-			molestias ullam tempore eum quisquam ad ex voluptates veritatis laborum similique aperiam sequi soluta quos
-			dicta, deleniti harum recusandae? Facere, porro a, ducimus, cumque mollitia facilis distinctio recusandae
-			iure et dolor possimus eaque nesciunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-			obcaecati similique deleniti tempora, ipsam a ipsum, repellendus veniam nulla corporis voluptatibus error
-			dicta veritatis nostrum eveniet perferendis ab rerum incidunt? Ipsum saepe ullam fugit ad asperiores earum
-			hic culpa excepturi expedita harum, mollitia nisi impedit dolor. Vitae tempore error, porro enim blanditiis
-			ipsum a id, ullam dolore ad quis ducimus. Rem obcaecati odio facilis, vel repudiandae mollitia ducimus ex
-			pariatur vitae beatae a eligendi, itaque autem qui quaerat, dolor inventore voluptatibus accusantium
-			voluptatum dolore eos asperiores! Tempora aliquam blanditiis fugiat aut suscipit, alias itaque incidunt
-			cumque nostrum facilis inventore reprehenderit dolore obcaecati nulla ipsum quod at! Natus aut magni ut.
-			Accusantium veritatis facilis, ea iusto facere praesentium! Voluptatibus quidem nulla, labore quaerat esse
-			sed veniam voluptas! Libero perspiciatis autem aspernatur excepturi omnis laboriosam dolor, fugit rem
-			officiis praesentium ex ipsa deleniti. A magnam obcaecati, rem voluptas est ut molestiae at non tenetur sunt
-			earum dicta doloribus, deserunt nemo? Suscipit optio magni quidem tenetur aspernatur et sit molestias ullam
-			tempore eum quisquam ad ex voluptates veritatis laborum similique aperiam sequi soluta quos dicta, deleniti
-			harum recusandae? Facere, porro a, ducimus, cumque mollitia facilis distinctio recusandae iure et dolor
-			possimus eaque nesciunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci obcaecati
-			similique deleniti tempora, ipsam a ipsum, repellendus veniam nulla corporis voluptatibus error dicta
-			veritatis nostrum eveniet perferendis ab rerum incidunt? Ipsum saepe ullam fugit ad asperiores earum hic
-			culpa excepturi expedita harum, mollitia nisi impedit dolor. Vitae tempore error, porro enim blanditiis
-			ipsum a id, ullam dolore ad quis ducimus. Rem obcaecati odio facilis, vel repudiandae mollitia ducimus ex
-			pariatur vitae beatae a eligendi, itaque autem qui quaerat, dolor inventore voluptatibus accusantium
-			voluptatum dolore eos asperiores! Tempora aliquam blanditiis fugiat aut suscipit, alias itaque incidunt
-			cumque nostrum facilis inventore reprehenderit dolore obcaecati nulla ipsum quod at! Natus aut magni ut.
-			Accusantium veritatis facilis, ea iusto facere praesentium! Voluptatibus quidem nulla, labore quaerat esse
-			sed veniam voluptas! Libero perspiciatis autem aspernatur excepturi omnis laboriosam dolor, fugit rem
-			officiis praesentium ex ipsa deleniti. A magnam obcaecati, rem voluptas est ut molestiae at non tenetur sunt
-			earum dicta doloribus, deserunt nemo? Suscipit optio magni quidem tenetur aspernatur et sit molestias ullam
-			tempore eum quisquam ad ex voluptates veritatis laborum similique aperiam sequi soluta quos dicta, deleniti
-			harum recusandae? Facere, porro a, ducimus, cumque mollitia facilis distinctio recusandae iure et dolor
-			possimus eaque nesciunt.
-		</Layout>
-	</React.Fragment>
-)
+export default ({ data }) => {
+	const { formatData } = useContext(RoomContext)
+	const rooms = formatData(data.allContentfulHotelrooms.edges)
+	return (
+		<React.Fragment>
+			<Layout>
+				<Container>
+					<Box my='4'>
+						<Heading fontFamily='sans' lineHeight='title'>
+							Featured rooms
+						</Heading>
+						<Text mt='3' fontFamily='sans' lineHeight='copy' letterSpacing='copy'>
+							From various customers, and from other experts from instagram who stay here for free we
+							suggest these rooms as our featured rooms. Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Nulla, quos. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+							Unde labore veritatis fuga ullam nihil culpa deleniti voluptatum. Dolorem odio tenetur culpa
+							nihil cumque deleniti quas.
+						</Text>
+					</Box>
+					<Gallery>{rooms.map(room => <Room room={room} />)}</Gallery>
+				</Container>
+			</Layout>
+		</React.Fragment>
+	)
+}
+
+export const query = graphql`
+	query {
+		allContentfulHotelrooms(filter: { featured: { eq: true } }) {
+			edges {
+				node {
+					id
+					images {
+						fluid(maxWidth: 1000) {
+							...GatsbyContentfulFluid
+							src
+							srcSet
+						}
+					}
+					featured
+					name
+					price
+					slug
+				}
+			}
+		}
+	}
+`
