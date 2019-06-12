@@ -95,11 +95,15 @@ export default () => {
 									<FaStar />
 									<FaStar />
 								</Stars>
-								<Text mb='2'>We offer best services</Text>
+								<Text mb='2' fontWeight='bold'>
+									We offer best services
+								</Text>
 								<Text color={colors.whites[8]}>
 									<Flex justifyContent='center' alignItems='center'>
 										<FaPhone />
-										<Text ml='10px'>000-000-000</Text>
+										<Text ml='10px' fontWeight='bold'>
+											000-000-000
+										</Text>
 									</Flex>
 								</Text>
 							</Text>
