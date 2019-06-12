@@ -9,7 +9,11 @@ import { RoomContext } from '../context'
 import Room from '../components/Room'
 
 export default ({ data }) => {
-	const { formatData } = useContext(RoomContext)
+	let context, formatData
+	context = useContext(RoomContext)
+	if (context) {
+		formatData = context.formatData
+	}
 	const rooms = formatData(data.allContentfulHotelrooms.edges)
 	return (
 		<React.Fragment>
