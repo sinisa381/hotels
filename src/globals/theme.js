@@ -33,6 +33,7 @@ const theme = {
 		small: '0 0 4px rgba(0, 0, 0, .125)',
 		large: '0 0 24px rgba(0, 0, 0, .125)',
 		normal: '0 0 16px rgba(0, 0, 0, .25)',
+		medium: '0 2px 16px rgba(0, 0, 0, 0.25)',
 		one: '0px 0px 4px 2px rgba( 0, 0, 0, 0.2 )',
 		two: '0px 0px 8px 2px rgba( 0, 0, 0, 0.2 )',
 		three: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )',

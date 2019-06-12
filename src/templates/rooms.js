@@ -2,8 +2,12 @@ import React from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
+import { colors } from '../globals/colors'
 import Img from 'gatsby-image'
-import { Box, Flex, Text } from '@rebass/emotion'
+import { MdFreeBreakfast } from 'react-icons/md'
+import { IoIosResize } from 'react-icons/io'
+import { FaDog } from 'react-icons/fa'
+import { Card, Box, Flex, Text, Heading } from '@rebass/emotion'
 
 export default props => {
 	let result, room, capacity, price, breakfast, pets, type, name, size, images, description, extras, defaultImg, rest
@@ -30,43 +34,82 @@ export default props => {
 				<MaxHeight>
 					<Image fluid={defaultImg} />
 				</MaxHeight>
-				<Box>
+				<Box width='70%' mx='auto' mt='3'>
+					<Heading fontFamily='sans' fontSize={[ 4, 5, 6 ]} lineHeight='title'>
+						About us
+					</Heading>
 					<Text
 						fontSize={[ 2, 3, 4 ]}
 						fontFamily='sans'
-						width='80%'
-						mx='auto'
 						mb='4'
-						mt='2'
+						mt='3'
+						letterSpacing='tracked'
 						lineHeight='copy'
 					>
 						{description}
 					</Text>
-				</Box>
-				<Box>
-					{images.length > 1 &&
-						rest.map((image, i) => (
-							<ImgContainer>
-								<Image fluid={image} key={i} />
-							</ImgContainer>
-						))}
-					<Flex>
-						<Box>
-							<Text ml='3'>We also have:</Text>
-							{extras.map((item, i) => (
-								<ul>
-									<li>
-										<Text key={i}>{item}</Text>
-									</li>
-								</ul>
-							))}
+					<Box>
+						<Box my={[ 4, 5 ]}>
+							{images.length > 1 && (
+								<Heading mb={[ 3, 4 ]} fontFamily='sans' fontSize={[ 3, 3, 4 ]}>
+									Aditional photoes
+								</Heading>
+							)}
+							{images.length > 1 &&
+								rest.map((image, i) => (
+									<ImgContainer>
+										<Image fluid={image} key={i} />
+									</ImgContainer>
+								))}
 						</Box>
-						<ul>
-							{pets && <li>pets are allowed</li>}
-							{breakfast && <li>breakfast is included</li>}
-							<li>room size is: {size}</li>
-						</ul>
-					</Flex>
+						<Flex justifyContent='space-between'>
+							<Circle bg='light-red' mt='auto'>
+								<Flex alignItems='center' flexDirection='column'>
+									<Text fontFamily='sans' lineHeight='copy' color='blacks.6' fontWeight='bold'>
+										room size:
+									</Text>
+									<Flex alignItems='center'>
+										<IoIosResize size='25px' color={colors.whites[8]} />
+										<Text fontFamily='sans' ml='2' color='whites.8'>
+											{size}
+										</Text>
+									</Flex>
+								</Flex>
+							</Circle>
+							<Card bg='light-blue' px='5' py='3' borderRadius={8} boxShadow='normal'>
+								<Box>
+									<Heading fontFamily='sans' fontSize={[ 3, 4, 4 ]}>
+										We also have:
+									</Heading>
+									{extras.map((item, i) => (
+										<ul>
+											<li>
+												<Text fontFamily='sans' key={i}>
+													{item}
+												</Text>
+											</li>
+										</ul>
+									))}
+								</Box>
+								{pets && (
+									<Flex alignItems='center' ml='3'>
+										<FaDog size='25px' color={colors.blacks[8]} />
+										<Text ml='2' fontFamily='sans' lineHeight='copy'>
+											pets allowed
+										</Text>
+									</Flex>
+								)}
+								{breakfast && (
+									<Flex alignItems='center' ml='3' mt='3'>
+										<MdFreeBreakfast size='25px' color={colors.blacks[8]} />
+										<Text ml='2' fontFamily='sans' lineHeight='copy'>
+											Free breakfast
+										</Text>
+									</Flex>
+								)}
+							</Card>
+						</Flex>
+					</Box>
 				</Box>
 			</Flex>
 		</Layout>
@@ -115,4 +158,14 @@ height:100%;
 const ImgContainer = styled.div`
 	height: 10rem;
 	width: 18rem;
+`
+const Circle = styled(Card)`
+border-radius:100%;
+width:9rem;
+height:9rem;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 0 16px rgba(0, 0, 0, .25);
+border:2px solid ${colors.red};
 `
