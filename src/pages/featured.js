@@ -5,14 +5,17 @@ import styled from '@emotion/styled'
 import { mq } from '../globals'
 import { Gallery, Container } from '../components/shared'
 import { Card, Box, Flex, Text, Heading } from '@rebass/emotion'
-import { RoomContext } from '../context'
 import Room from '../components/Room'
 
 export default ({ data }) => {
-	const context = useContext(RoomContext)
-	let formatData
-	if (context) {
-		formatData = context.formatData
+	const formatData = items => {
+		return items.map(({ node }) => {
+			const room = {
+				...node,
+				images: node.images.map(({ fluid }) => fluid)
+			}
+			return room
+		})
 	}
 	const rooms = formatData(data.allContentfulHotelrooms.edges)
 	return (
