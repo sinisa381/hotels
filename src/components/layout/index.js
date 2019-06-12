@@ -3,6 +3,7 @@ import Header from '../header'
 import Footer from '../footer'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
+import { Global, css } from '@emotion/core'
 import { Box } from '@rebass/emotion'
 
 export default ({ children }) => {
@@ -15,6 +16,30 @@ export default ({ children }) => {
 					href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
 				/>
 			</Helmet>
+			<Global
+				styles={css`
+					html {
+						margin: 0;
+						padding: 0;
+						box-sizing: border-box;
+						position: relative;
+						width: 100%;
+						height: 100%;
+					}
+
+					body {
+						margin: 0;
+						padding: 0;
+						width: 100%;
+						height: 100%;
+					}
+					*,
+					*:after,
+					*:before {
+						box-sizing: inherit;
+					}
+				`}
+			/>
 			<Header />
 			<Box pt='5'>
 				<Vh>{children}</Vh>
