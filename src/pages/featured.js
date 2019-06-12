@@ -9,8 +9,8 @@ import { RoomContext } from '../context'
 import Room from '../components/Room'
 
 export default ({ data }) => {
-	let context, formatData
-	context = useContext(RoomContext)
+	const context = useContext(RoomContext)
+	let formatData
 	if (context) {
 		formatData = context.formatData
 	}
