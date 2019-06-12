@@ -14,7 +14,7 @@ export default () => {
 					<Swiper />
 					<Flex mt={[ 4, 5, 5 ]}>
 						<Box mx='auto'>
-							<Heading fontFamily='sans' color={colors.blacks[9]} fontSize={[ 3, 4, 5 ]}>
+							<Heading color={colors.blacks[9]} fontSize={[ 3, 4, 5 ]}>
 								Welcome to our hotel
 							</Heading>
 							<Line />
@@ -30,7 +30,7 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading fontFamily='sans' textAlign='center' color={colors.blacks[8]}>
+							<Heading textAlign='center' color={colors.blacks[8]}>
 								Accept payments with:
 							</Heading>
 							<Box>
@@ -53,16 +53,10 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading fontFamily='sans' textAlign='center' color={colors.blacks[8]}>
+							<Heading textAlign='center' color={colors.blacks[8]}>
 								Free for John Wick
 							</Heading>
-							<Text
-								color={colors.whites[8]}
-								fontFamily='sans'
-								textAlign='center'
-								mt='3'
-								fontWeight='bold'
-							>
+							<Text color={colors.whites[8]} textAlign='center' mt='3' fontWeight='bold'>
 								Continental rules apply if you have the coin
 							</Text>
 							<Box />
@@ -76,16 +70,10 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading fontFamily='sans' textAlign='center' color={colors.blacks[8]}>
+							<Heading textAlign='center' color={colors.blacks[8]}>
 								Since 1965
 							</Heading>
-							<Text
-								color={colors.whites[8]}
-								fontFamily='sans'
-								textAlign='center'
-								mt='3'
-								fontWeight='bold'
-							>
+							<Text color={colors.whites[8]} textAlign='center' mt='3' fontWeight='bold'>
 								Awarded for hospitality, luxury, food and comfort
 							</Text>
 							<Box />
@@ -99,7 +87,7 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading fontFamily='sans' textAlign='center' color={colors.blacks[8]}>
+							<Text textAlign='center' color={colors.blacks[8]}>
 								<Stars color='yellow' px='2'>
 									<FaStar />
 									<FaStar />
@@ -114,7 +102,7 @@ export default () => {
 										<Text ml='10px'>000-000-000</Text>
 									</Flex>
 								</Text>
-							</Heading>
+							</Text>
 						</Card>
 					</Flex>
 				</FontFamily>
@@ -141,4 +129,4 @@ const Line = styled.div`
 	margin: 0 auto;
 	margin-top: 1rem;
 `
-const FontFamily = styled.div`font-family: 'system-ui', sans-serif;`
+const FontFamily = styled.div`font-family: 'system-ui', sans-serif !important;`
