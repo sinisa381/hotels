@@ -141,4 +141,4 @@ const Line = styled.div`
 	margin: 0 auto;
 	margin-top: 1rem;
 `
-const FontFamily = styled.div`font-family: system-ui, sans-serif;`
+const FontFamily = styled.div`font-family: 'system-ui', sans-serif;`
