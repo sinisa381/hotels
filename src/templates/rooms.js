@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { colors } from '../globals/colors'
+import { mq } from '../globals'
 import Img from 'gatsby-image'
 import { MdFreeBreakfast } from 'react-icons/md'
 import { IoIosResize } from 'react-icons/io'
@@ -34,7 +35,7 @@ export default props => {
 				<MaxHeight>
 					<Image fluid={defaultImg} />
 				</MaxHeight>
-				<Box width='70%' mx='auto' mt='3'>
+				<Container width='70%' mx='auto' mt='3'>
 					<Heading fontFamily='sans' fontSize={[ 4, 5, 6 ]} lineHeight='title'>
 						About us
 					</Heading>
@@ -55,14 +56,16 @@ export default props => {
 									Aditional photoes
 								</Heading>
 							)}
-							{images.length > 1 &&
-								rest.map((image, i) => (
-									<ImgContainer>
-										<Image fluid={image} key={i} />
-									</ImgContainer>
-								))}
+							<Flex flexWrap='wrap'>
+								{images.length > 1 &&
+									rest.map((image, i) => (
+										<ImgContainer>
+											<Image fluid={image} key={i} />
+										</ImgContainer>
+									))}
+							</Flex>
 						</Box>
-						<Flex justifyContent='space-between'>
+						<Info>
 							<Circle bg='light-red' mt='auto'>
 								<Flex alignItems='center' flexDirection='column'>
 									<Text fontFamily='sans' lineHeight='copy' color='blacks.6' fontWeight='bold'>
@@ -79,7 +82,7 @@ export default props => {
 							<Card bg='light-blue' px='5' py='3' borderRadius={8} boxShadow='normal'>
 								<Box>
 									<Heading fontFamily='sans' fontSize={[ 3, 4, 4 ]}>
-										We also have:
+										Extras:
 									</Heading>
 									{extras.map((item, i) => (
 										<ul>
@@ -108,9 +111,9 @@ export default props => {
 									</Flex>
 								)}
 							</Card>
-						</Flex>
+						</Info>
 					</Box>
-				</Box>
+				</Container>
 			</Flex>
 		</Layout>
 	)
@@ -158,6 +161,7 @@ height:100%;
 const ImgContainer = styled.div`
 	height: 10rem;
 	width: 18rem;
+	margin-right: .4rem;
 `
 const Circle = styled(Card)`
 border-radius:100%;
@@ -168,4 +172,20 @@ justify-content:center;
 align-items:center;
 box-shadow:0 0 16px rgba(0, 0, 0, .25);
 border:2px solid ${colors.red};
+`
+const Container = styled(Box)`
+width:90%;
+${mq[1]}{
+width:80%;
+}
+${mq[2]}{
+width:70%;
+}
+`
+const Info = styled.div`
+	display: block;
+	${mq[1]} {
+		display: flex;
+		justify-content: space-between;
+	}
 `

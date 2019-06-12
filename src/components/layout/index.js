@@ -16,7 +16,7 @@ export default ({ children }) => {
 				/>
 			</Helmet>
 			<Header />
-			<Box pt='5'>
+			<Box pt='4'>
 				<Vh>{children}</Vh>
 			</Box>
 			<Footer />
