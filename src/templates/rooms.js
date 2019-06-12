@@ -50,7 +50,7 @@ export default props => {
 						{description}
 					</Text>
 					<Box>
-						<Box my={[ 4, 5 ]}>
+						<Box my={[ 2, 4, 5 ]}>
 							{images.length > 1 && (
 								<Heading mb={[ 3, 4 ]} fontFamily='sans' fontSize={[ 3, 3, 4 ]}>
 									Aditional photoes
@@ -66,10 +66,18 @@ export default props => {
 							</Flex>
 						</Box>
 						<Info>
-							<Circle bg='light-red' mt='auto'>
+							<Box mt='auto' mb={[ 5, 3, 2 ]}>
+								<Heading fontFamily='sans'>Room size</Heading>
+								<Flex alignItems='center'>
+									<IoIosResize size='25px' color='black' />
+									<Text ml='2'>{size}</Text>
+								</Flex>
+							</Box>
+
+							{/* <Circle bg='blacks.6' mt='auto'>
 								<Flex alignItems='center' flexDirection='column'>
-									<Text fontFamily='sans' lineHeight='copy' color='blacks.6' fontWeight='bold'>
-										room size:
+									<Text fontFamily='sans' lineHeight='copy' color='whites.9' fontWeight='bold'>
+										Room size:
 									</Text>
 									<Flex alignItems='center'>
 										<IoIosResize size='25px' color={colors.whites[8]} />
@@ -78,12 +86,12 @@ export default props => {
 										</Text>
 									</Flex>
 								</Flex>
-							</Circle>
-							<Card bg='light-blue' px='5' py='3' borderRadius={8} boxShadow='normal'>
-								<Box>
-									<Heading fontFamily='sans' fontSize={[ 3, 4, 4 ]}>
-										Extras:
-									</Heading>
+							</Circle> */}
+							<SmallCard borderRadius={8} boxShadow='normal'>
+								<Heading px='4' py='2' fontFamily='sans' fontSize='4' bg='light-blue' width={1}>
+									Extras:
+								</Heading>
+								<Box px='2'>
 									{extras.map((item, i) => (
 										<ul>
 											<li>
@@ -94,23 +102,28 @@ export default props => {
 										</ul>
 									))}
 								</Box>
-								{pets && (
-									<Flex alignItems='center' ml='3'>
-										<FaDog size='25px' color={colors.blacks[8]} />
-										<Text ml='2' fontFamily='sans' lineHeight='copy'>
-											pets allowed
-										</Text>
-									</Flex>
-								)}
-								{breakfast && (
-									<Flex alignItems='center' ml='3' mt='3'>
-										<MdFreeBreakfast size='25px' color={colors.blacks[8]} />
-										<Text ml='2' fontFamily='sans' lineHeight='copy'>
-											Free breakfast
-										</Text>
-									</Flex>
-								)}
-							</Card>
+								<Box>
+									<hr />
+								</Box>
+								<Box pb='3'>
+									{pets && (
+										<Flex alignItems='center' ml='3' mt='2' px='3' mb='3'>
+											<FaDog size='25px' color={colors.blacks[8]} />
+											<Text ml='2' fontFamily='sans' lineHeight='copy'>
+												pets allowed
+											</Text>
+										</Flex>
+									)}
+									{breakfast && (
+										<Flex alignItems='center' ml='3' mt='2' px='3'>
+											<MdFreeBreakfast size='25px' color={colors.blacks[8]} />
+											<Text ml='2' fontFamily='sans' lineHeight='copy'>
+												Free breakfast
+											</Text>
+										</Flex>
+									)}
+								</Box>
+							</SmallCard>
 						</Info>
 					</Box>
 				</Container>
@@ -171,7 +184,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 box-shadow:0 0 16px rgba(0, 0, 0, .25);
-border:2px solid ${colors.red};
+@media only screen and (max-width:767px){
+margin:0 auto;
+margin-bottom:3rem;
+}
 `
 const Container = styled(Box)`
 width:90%;
@@ -188,4 +204,10 @@ const Info = styled.div`
 		display: flex;
 		justify-content: space-between;
 	}
+`
+const SmallCard = styled(Card)`
+max-width:362px;
+@media only screen and (max-width:767px){
+margin:0 auto;
+}
 `
