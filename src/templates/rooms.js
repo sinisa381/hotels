@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/layout'
+import Modal from '@material-ui/core/Modal'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
+import { Gallery } from '../components/shared'
 import { colors } from '../globals/colors'
 import { mq } from '../globals'
 import Img from 'gatsby-image'
@@ -12,6 +14,7 @@ import { Card, Box, Flex, Text, Heading } from '@rebass/emotion'
 import { FaDollarSign } from 'react-icons/fa'
 
 export default props => {
+	const [ open, setOpen ] = useState(false)
 	let result, room, capacity, price, breakfast, pets, type, name, size, images, description, extras, defaultImg, rest
 	if (props.data) {
 		room = props.data.room.edges[0].node
@@ -28,7 +31,13 @@ export default props => {
 		;[ defaultImg, ...rest ] = images
 		;[ result ] = props.data.room.edges.map(({ node }) => node.slug)
 	}
-	console.log(rest)
+
+	const handleModalOpen = () => {
+		setOpen(true)
+	}
+	const handleModalClose = () => {
+		setOpen(false)
+	}
 
 	return (
 		<Layout>
@@ -40,6 +49,7 @@ export default props => {
 					<Heading fontFamily='sans' fontSize={[ 4, 5, 6 ]} lineHeight='title'>
 						About
 					</Heading>
+
 					<Text
 						fontSize={[ 2, 3, 4 ]}
 						fontFamily='sans'
@@ -57,18 +67,26 @@ export default props => {
 									Aditional photos
 								</Heading>
 							)}
-							<Flex flexWrap='wrap'>
-								{images.length > 1 &&
-									rest.map((image, i) => (
-										<ImgContainer>
-											<Image fluid={image} key={i} />
-										</ImgContainer>
+							{images.length > 1 && (
+								<Gallery>
+									{rest.map((image, i) => (
+										<React.Fragment>
+											<Modal open={open} onClose={handleModalClose}>
+												<ModalContent>
+													<Image fluid={image} key={i} />
+												</ModalContent>
+											</Modal>
+											<ImgContainer onClick={handleModalOpen}>
+												<Image fluid={image} key={i} />
+											</ImgContainer>
+										</React.Fragment>
 									))}
-							</Flex>
+								</Gallery>
+							)}
 						</Box>
 						<Info>
-							<Box mt='auto'>
-								<Box mb={[ 5, 3, 2 ]}>
+							<FormDataDesc mt='auto'>
+								<Box mb={[ 3, 2, 1 ]}>
 									<Flex alignItems='center'>
 										<Heading fontFamily='sans' mr='2' lineHeight='title'>
 											Type {type}
@@ -76,7 +94,7 @@ export default props => {
 										<Flex alignItems='center' />
 									</Flex>
 								</Box>
-								<Box mb={[ 5, 3, 2 ]}>
+								<Box mb={[ 3, 2, 1 ]}>
 									<Flex alignItems='center'>
 										<Heading fontFamily='sans' mr='2' lineHeight='title'>
 											Capacity: {capacity}
@@ -84,7 +102,7 @@ export default props => {
 										<Flex alignItems='center' />
 									</Flex>
 								</Box>
-								<Box mb={[ 5, 3, 2 ]}>
+								<Box mb={[ 3, 2, 1 ]}>
 									<Flex alignItems='center'>
 										<Heading fontFamily='sans' mr='2' lineHeight='title'>
 											Only
@@ -92,12 +110,12 @@ export default props => {
 										<Flex alignItems='center'>
 											<FaDollarSign size='20px' color={colors.green} />
 											<Text lineHeight='solid' fontFamily='sans' color={colors.green}>
-												{size}
+												{price}
 											</Text>
 										</Flex>
 									</Flex>
 								</Box>
-								<Box mb={[ 5, 3, 2 ]}>
+								<Box mb={[ 3, 2, 1 ]}>
 									<Heading fontFamily='sans' lineHeight='title'>
 										Room size
 									</Heading>
@@ -108,7 +126,7 @@ export default props => {
 										</Text>
 									</Flex>
 								</Box>
-							</Box>
+							</FormDataDesc>
 							<SmallCard borderRadius={8} boxShadow='normal'>
 								<Heading px='4' py='2' fontFamily='sans' fontSize='4' bg='light-blue' width={1}>
 									Extras:
@@ -194,10 +212,9 @@ width:100%;
 height:100%;
 `
 const ImgContainer = styled.div`
-	height: 10rem;
-	width: 18rem;
-	margin-right: .4rem;
-	margin-bottom: .4rem;
+	height: 100%;
+	width: auto;
+	cursor: pointer;
 `
 const Container = styled(Box)`
 width:90%;
@@ -218,6 +235,25 @@ const Info = styled.div`
 const SmallCard = styled(Card)`
 max-width:362px;
 @media only screen and (max-width:767px){
+margin:0 auto ;
+}
+`
+
+const ModalContent = styled.div`
+	width: 30rem;
+	height: 20rem;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+`
+
+const FormDataDesc = styled(Box)`
 margin:0 auto;
+margin-bottom:2rem;
+${mq[1]}{
+  margin:0;
+  margin-top:auto;
+  display:block;
 }
 `
