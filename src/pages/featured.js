@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Gallery, Container } from '../components/shared'
-import {  Box,  Text, Heading } from '@rebass/emotion'
+import { Box, Text, Heading } from '@rebass/emotion'
 import Room from '../components/Room'
 
 export default ({ data }) => {
@@ -32,7 +32,7 @@ export default ({ data }) => {
 							nihil cumque deleniti quas.
 						</Text>
 					</Box>
-					<Gallery>{rooms.map(room => <Room room={room} />)}</Gallery>
+					<Gallery>{rooms.map(room => <Room key={room.name} room={room} />)}</Gallery>
 				</Container>
 			</Layout>
 		</React.Fragment>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Layout from '../components/layout'
-import Modal from '@material-ui/core/Modal'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { Gallery } from '../components/shared'
@@ -12,9 +11,9 @@ import { IoIosResize } from 'react-icons/io'
 import { FaDog } from 'react-icons/fa'
 import { Card, Box, Flex, Text, Heading } from '@rebass/emotion'
 import { FaDollarSign } from 'react-icons/fa'
+import ImageContainerModal from '../components/features/ImageContainerModal'
 
 export default props => {
-	const [ open, setOpen ] = useState(false)
 	let result, room, capacity, price, breakfast, pets, type, name, size, images, description, extras, defaultImg, rest
 	if (props.data) {
 		room = props.data.room.edges[0].node
@@ -30,13 +29,6 @@ export default props => {
 		extras = room.extras.map(item => item.content)
 		;[ defaultImg, ...rest ] = images
 		;[ result ] = props.data.room.edges.map(({ node }) => node.slug)
-	}
-
-	const handleModalOpen = () => {
-		setOpen(true)
-	}
-	const handleModalClose = () => {
-		setOpen(false)
 	}
 
 	return (
@@ -70,16 +62,9 @@ export default props => {
 							{images.length > 1 && (
 								<Gallery>
 									{rest.map((image, i) => (
-										<React.Fragment>
-											<Modal open={open} onClose={handleModalClose}>
-												<ModalContent>
-													<Image fluid={image} key={i} />
-												</ModalContent>
-											</Modal>
-											<ImgContainer onClick={handleModalOpen}>
-												<Image fluid={image} key={i} />
-											</ImgContainer>
-										</React.Fragment>
+										<div key={i}>
+											<ImageContainerModal image={image} />
+										</div>
 									))}
 								</Gallery>
 							)}
@@ -211,12 +196,6 @@ const Image = styled(Img)`
 width:100%;
 height:100%;
 `
-const ImgContainer = styled.div`
-	height: 100%;
-	max-height: 13rem;
-	width: auto;
-	cursor: pointer;
-`
 const Container = styled(Box)`
 width:90%;
 ${mq[1]}{
@@ -238,15 +217,6 @@ max-width:362px;
 @media only screen and (max-width:767px){
 margin:0 auto ;
 }
-`
-
-const ModalContent = styled.div`
-	width: 30rem;
-	height: 20rem;
-	position: absolute;
-	transform: translate(-50%, -50%);
-	top: 50%;
-	left: 50%;
 `
 
 const FormDataDesc = styled(Box)`
