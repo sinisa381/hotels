@@ -40,6 +40,7 @@
 		"react-headroom": "^2.2.8",
 		"react-helmet": "^5.2.0",
 		"react-icons": "^3.5.0",
+		"react-spring": "^8.0.25",
 		"styled-system": "^5.0.5"
 	},
 	"devDependencies": {

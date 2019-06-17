@@ -79,7 +79,7 @@ export default props => {
 								<Box mb={[ 5, 3, 2 ]}>
 									<Flex alignItems='center'>
 										<Heading fontFamily='sans' mr='2' lineHeight='title'>
-											Capacity {capacity}
+											Capacity: {capacity}
 										</Heading>
 										<Flex alignItems='center' />
 									</Flex>

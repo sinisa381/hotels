@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSpring, animated, config } from 'react-spring'
+import { FaHeart } from 'react-icons/fa'
 import { Flex, Box, Text } from '@rebass/emotion'
 import { mq } from '../globals'
 import Img from 'gatsby-image'
@@ -9,8 +11,17 @@ import { Link } from 'gatsby'
 import { colors } from '../globals/colors'
 
 export default ({ room, price }) => {
+	const [ isVisible, setIsVisible ] = useState(false)
+	useEffect(() => {
+		setIsVisible(false)
+	}, [])
+	const heart = useSpring({
+		config: config.stiff,
+		to: { opacity: `${!isVisible ? 1 : 0}` },
+		delay: 100
+	})
 	return (
-		<Container>
+		<Container onMouseOver={() => setIsVisible(true)} onMouseOut={() => setIsVisible(false)}>
 			<Abbr title={room.name}>
 				<Image fixed={room.images[0]} alt={room.name} />
 			</Abbr>
@@ -25,6 +36,15 @@ export default ({ room, price }) => {
 						</Text>
 					</Flex>
 				</Overlay>
+			)}
+			{room.featured && (
+				<animated.div style={heart}>
+					<Featured>
+						<Abbr title='featured'>
+							<FaHeart />
+						</Abbr>
+					</Featured>
+				</animated.div>
 			)}
 
 			<LinkTo className='thelink' to={`/rooms/${room.slug}/`}>
@@ -94,4 +114,13 @@ const Overlay = styled.div`
 	left: 0;
 	width: 100%;
 	background-color: ${colors.blacks[7]};
+`
+
+const Featured = styled.div`
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: inline-block;
+	color: ${colors['light-red']};
+	padding: .5rem 1rem;
 `

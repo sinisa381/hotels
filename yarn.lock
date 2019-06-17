@@ -10096,6 +10096,14 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-spring@^8.0.25:
+  version "8.0.25"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.25.tgz#3b19c370e26b0a62630390c5daf3092e714805c4"
+  integrity sha512-KLSLI9ccpoxvxzCbtTqSOHNHhndxAeEcHsgFZoyybP3GpGh0axmtauUAH8c3XkozIW8r9gScvrCWw3F1EPIcBw==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    prop-types "^15.5.8"
+
 react-transition-group@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.1.1.tgz#16efe9ac8c68306f6bef59c7da5a96b4dfd9fb32"

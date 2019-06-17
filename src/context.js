@@ -25,9 +25,6 @@ export default class RoomProvider extends Component {
 			maxPrice
 		})
 	}
-	componentDidMount() {
-		console.log('mounted')
-	}
 
 	formatData(items) {
 		return items.map(({ node }) => {
