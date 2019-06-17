@@ -10,7 +10,7 @@ export const Abbr = styled.abbr`
 `
 
 export const Gallery = styled.div`
-	min-height: 70vh;
+	min-height: ${props => (props.minHeight ? props.minHeight : '')};
 	display: grid;
 	justify-content: center;
 	width: 100%;

@@ -203,7 +203,7 @@ export default class Rooms extends React.Component {
 					<Container>
 						{' '}
 						{sortedRooms && (
-							<Gallery>
+							<Gallery minHeight='70vh'>
 								{sortedRooms.map(room => <Room key={room.id} room={room} price={true} />)}
 							</Gallery>
 						)}
