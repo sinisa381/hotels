@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import Swiper from '../components/slider'
 import styled from '@emotion/styled'
 import { colors } from '../globals/colors'
+import { Container } from '../components/shared'
 import { Flex, Box, Text, Card, Heading } from '@rebass/emotion'
 import { FaStar, FaBitcoin, FaDollarSign, FaPaypal, FaStripe, FaPhone } from 'react-icons/fa'
 // missing fontfamilies
@@ -14,10 +15,24 @@ export default () => {
 					<Swiper />
 					<Flex mt={[ 4, 5, 5 ]}>
 						<Box mx='auto'>
-							<Heading color={colors.blacks[9]} fontSize={[ 3, 4, 5 ]}>
-								Welcome to our hotel
-							</Heading>
-							<Line />
+							<Container>
+								<Heading
+									color={colors.blacks[9]}
+									textAlign='center'
+									mb='3'
+									FontFamily='sans'
+									fontSize={[ 3, 4, 5 ]}
+								>
+									Welcome to our hotel
+								</Heading>
+								<Line />
+								<Text mt='4' lineHeight='copy' letterSpacing='tracked' FontFamily='sans'>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium odit officiis
+									obcaecati facere eius ad, in quis suscipit quos autem similique quibusdam cumque
+									velit quam ratione porro incidunt. Reprehenderit repellendus dolore, amet id alias
+									at et, aspernatur impedit aut totam officiis ipsam voluptates libero placeat.
+								</Text>
+							</Container>
 						</Box>
 					</Flex>
 					<Flex justifyContent='space-around' flexWrap='wrap' mt={[ 4, 5, 6 ]} ml='2'>

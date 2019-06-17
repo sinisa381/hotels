@@ -197,6 +197,7 @@ const ImgContainer = styled.div`
 	height: 10rem;
 	width: 18rem;
 	margin-right: .4rem;
+	margin-bottom: .4rem;
 `
 const Container = styled(Box)`
 width:90%;
