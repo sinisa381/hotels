@@ -213,6 +213,7 @@ height:100%;
 `
 const ImgContainer = styled.div`
 	height: 100%;
+	max-height: 13rem;
 	width: auto;
 	cursor: pointer;
 `
