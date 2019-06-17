@@ -38,7 +38,7 @@ export default props => {
 				</MaxHeight>
 				<Container width='70%' mx='auto' mt='3'>
 					<Heading fontFamily='sans' fontSize={[ 4, 5, 6 ]} lineHeight='title'>
-						About us
+						About
 					</Heading>
 					<Text
 						fontSize={[ 2, 3, 4 ]}
