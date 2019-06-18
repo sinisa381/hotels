@@ -17,8 +17,8 @@ export default ({ room, price }) => {
 	}, [])
 	const heart = useSpring({
 		config: config.stiff,
-		to: { opacity: `${!isVisible ? 1 : 0}` },
-		delay: 100
+		from: { fontSize: '1rem' },
+		to: { fontSize: `(${isVisible ? '1.7rem' : '1rem'})` }
 	})
 	return (
 		<Container onMouseOver={() => setIsVisible(true)} onMouseOut={() => setIsVisible(false)}>
@@ -74,7 +74,7 @@ position:relative;
 &:hover{
   .thelink{
     opacity:1;
-    transition:all .3s;
+    transition:all .5s;
   }
 }
 `

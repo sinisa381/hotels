@@ -21,12 +21,18 @@ export default () => {
 									textAlign='center'
 									mb='3'
 									FontFamily='sans'
-									fontSize={[ 3, 4, 5 ]}
+									fontSize={[ 4, 5 ]}
 								>
 									Welcome to our hotel
 								</Heading>
 								<Line />
-								<Text mt='4' lineHeight='copy' letterSpacing='tracked' FontFamily='sans'>
+								<Text
+									mt='4'
+									lineHeight='copy'
+									letterSpacing='tracked'
+									FontFamily='sans'
+									fontSize={[ 2, 3 ]}
+								>
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium odit officiis
 									obcaecati facere eius ad, in quis suscipit quos autem similique quibusdam cumque
 									velit quam ratione porro incidunt. Reprehenderit repellendus dolore, amet id alias

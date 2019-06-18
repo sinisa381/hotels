@@ -21,10 +21,10 @@ export default ({ data }) => {
 			<Layout>
 				<Container>
 					<Box my='4'>
-						<Heading fontFamily='sans' lineHeight='title'>
+						<Heading fontFamily='sans' lineHeight='title' fontSize={[ 4, 5 ]}>
 							Featured rooms
 						</Heading>
-						<Text mt='3' fontFamily='sans' lineHeight='copy' letterSpacing='copy'>
+						<Text mt='3' lineHeight='copy' letterSpacing='tracked' FontFamily='sans' fontSize={[ 2, 3 ]}>
 							From various customers, and from other experts from instagram who stay here for free we
 							suggest these rooms as our featured rooms. Lorem ipsum dolor sit amet, consectetur
 							adipisicing elit. Nulla, quos. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
