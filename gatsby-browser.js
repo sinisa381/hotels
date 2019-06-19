@@ -1,5 +1,6 @@
 import React from 'react'
 import { RoomProvider } from './src/context'
+import { RoomProviderHook } from './src/failcontext'
 import { ThemeProvider } from 'emotion-theming'
 import theme from './src/globals/theme'
 import { colors } from './src/globals/colors'
@@ -59,7 +60,9 @@ export const onClientEntry = () => {
 export const wrapRootElement = ({ element }) => (
 	<ThemeProvider theme={theme}>
 		<MuiThemeProvider theme={muitheme}>
-			<RoomProvider>{element}</RoomProvider>
+			<RoomProviderHook>
+				<RoomProvider>{element}</RoomProvider>
+			</RoomProviderHook>
 		</MuiThemeProvider>
 	</ThemeProvider>
 )
