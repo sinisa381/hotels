@@ -9,6 +9,8 @@ module.exports = {
 	plugins: [
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-sharp`,
+		`gatsby-plugin-material-ui`,
+		`gatsby-plugin-emotion`,
 		{
 			resolve: `gatsby-source-contentful`,
 			options: {
