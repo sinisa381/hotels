@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Gallery } from '../components/shared'
+import { Gallery, Text, Heading } from '../components/shared'
 import { colors } from '../globals/colors'
 import { mq } from '../globals'
 import Img from 'gatsby-image'
 import { MdFreeBreakfast } from 'react-icons/md'
 import { IoIosResize } from 'react-icons/io'
 import { FaDog } from 'react-icons/fa'
-import { Card, Box, Flex, Text, Heading } from '@rebass/emotion'
+import { Card, Box, Flex } from '@rebass/emotion'
 import { FaDollarSign } from 'react-icons/fa'
 import ImageContainerModal from '../components/features/ImageContainerModal'
 
 export default props => {
-	let result, room, capacity, price, breakfast, pets, type, name, size, images, description, extras, defaultImg, rest
+	let room, capacity, price, breakfast, pets, type, size, images, description, extras, defaultImg, rest
 	if (props.data) {
 		room = props.data.room.edges[0].node
 		capacity = room.capacity
@@ -22,13 +22,12 @@ export default props => {
 		breakfast = room.breakfast
 		pets = room.pets
 		type = room.type
-		name = room.name
 		size = room.size
 		images = room.images.map(image => image.fluid)
 		description = room.description.description
 		extras = room.extras.map(item => item.content)
 		;[ defaultImg, ...rest ] = images
-		;[ result ] = props.data.room.edges.map(({ node }) => node.slug)
+		// ;[ result ] = props.data.room.edges.map(({ node }) => node.slug)
 	}
 
 	return (

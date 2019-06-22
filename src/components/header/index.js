@@ -13,7 +13,8 @@ export default () => {
 				<Flex justifyContent='space-between' alignItems='center'>
 					<Link to='/'>
 						<Flex justifyContent='space-between' alignItems='center'>
-							<FaHotel size='1.2rem' /> <Box mr='2' />Hotel
+							<FaHotel size='1.2rem' /> <Box mr='2' />
+							<LinkItem>Hotel</LinkItem>
 						</Flex>
 					</Link>
 					<Flex>
@@ -34,6 +35,7 @@ export default () => {
 
 const LinkItem = styled(Text)`
 text-transform:capitalize;
+font-family:Roboto;
 `
 
 const Link = styled(GatsbyLink)`

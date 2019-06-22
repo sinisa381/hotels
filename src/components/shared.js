@@ -1,5 +1,14 @@
 import styled from '@emotion/styled'
+import { Heading as Head, Text as Para } from '@rebass/emotion'
+
 import { mq } from '../globals'
+
+export const Heading = styled(Head)`
+font-family: Open Sans Condensed, sans-serif;
+`
+export const Text = styled(Para)`
+font-family:Roboto;
+`
 
 export const Abbr = styled.abbr`
 	border-bottom: none !important;

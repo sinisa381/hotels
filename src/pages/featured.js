@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
-import { Gallery, Container } from '../components/shared'
-import { Box, Text, Heading } from '@rebass/emotion'
+import { Gallery, Container, Text, Heading } from '../components/shared'
+import { Box } from '@rebass/emotion'
 import Room from '../components/Room'
 
 export default ({ data }) => {

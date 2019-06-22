@@ -1,4 +1,7 @@
 import React from 'react'
+import 'typeface-merriweather'
+import 'typeface-roboto'
+import 'typeface-open-sans-condensed'
 import { RoomProvider } from './src/context'
 import { RoomProviderHook } from './src/failcontext'
 import { ThemeProvider } from 'emotion-theming'

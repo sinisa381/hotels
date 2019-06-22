@@ -19,6 +19,7 @@ const theme = {
 
 	fonts: {
 		sans: 'system-ui, sans-serif',
+		mery: 'Merriweather, serif',
 		mono: 'Menlo, monospace',
 		mont: 'Montserrat, sans-serif',
 		roboto: 'Roboto, sans-serif',

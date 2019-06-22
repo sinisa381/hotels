@@ -11,10 +11,6 @@ export default ({ children }) => {
 		<React.Fragment>
 			<Helmet>
 				<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css' />
-				<link
-					rel='stylesheet'
-					href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
-				/>
 			</Helmet>
 			<Global
 				styles={css`

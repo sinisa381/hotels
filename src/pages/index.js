@@ -3,15 +3,15 @@ import Layout from '../components/layout'
 import Swiper from '../components/slider'
 import styled from '@emotion/styled'
 import { colors } from '../globals/colors'
-import { Container } from '../components/shared'
-import { Flex, Box, Text, Card, Heading } from '@rebass/emotion'
+import { Container, Text, Heading } from '../components/shared'
+import { Flex, Box, Card } from '@rebass/emotion'
 import { FaStar, FaBitcoin, FaDollarSign, FaPaypal, FaStripe, FaPhone } from 'react-icons/fa'
 // missing fontfamilies
 export default () => {
 	return (
 		<React.Fragment>
 			<Layout>
-				<FontFamily>
+				<div>
 					<Swiper />
 					<Flex mt={[ 4, 5, 5 ]}>
 						<Box mx='auto'>
@@ -20,20 +20,22 @@ export default () => {
 									color={colors.blacks[9]}
 									textAlign='center'
 									mb='3'
-									FontFamily='sans'
+									as='h1'
+									FontFamily='mono'
 									fontSize={[ 4, 5 ]}
 								>
 									Welcome to our hotel
 								</Heading>
 								<Line />
 								<Text
-									mt='4'
-									lineHeight='copy'
+									mt='5'
+									lineHeight='title'
 									letterSpacing='tracked'
-									FontFamily='sans'
+									FontFamily='roboto'
 									fontSize={[ 2, 3 ]}
+									as='p'
 								>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium odit officiis
+									Hotel ipsum dolor sit amet consectetur adipisicing elit. Laudantium odit officiis
 									obcaecati facere eius ad, in quis suscipit quos autem similique quibusdam cumque
 									velit quam ratione porro incidunt. Reprehenderit repellendus dolore, amet id alias
 									at et, aspernatur impedit aut totam officiis ipsam voluptates libero placeat.
@@ -51,7 +53,7 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading textAlign='center' color={colors.blacks[8]}>
+							<Heading as='h2' textAlign='center' color={colors.blacks[8]}>
 								Accept payments with:
 							</Heading>
 							<Box>
@@ -74,7 +76,7 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading textAlign='center' color={colors.blacks[8]}>
+							<Heading as='h2' textAlign='center' color={colors.blacks[8]}>
 								Free for John Wick
 							</Heading>
 							<Text color={colors.whites[8]} textAlign='center' mt='3' fontWeight='bold'>
@@ -91,7 +93,7 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading textAlign='center' color={colors.blacks[8]}>
+							<Heading as='h2' textAlign='center' color={colors.blacks[8]}>
 								Since 1965
 							</Heading>
 							<Text color={colors.whites[8]} textAlign='center' mt='3' fontWeight='bold'>
@@ -130,7 +132,7 @@ export default () => {
 							</Text>
 						</Card>
 					</Flex>
-				</FontFamily>
+				</div>
 			</Layout>
 		</React.Fragment>
 	)
@@ -154,4 +156,3 @@ const Line = styled.div`
 	margin: 0 auto;
 	margin-top: 1rem;
 `
-const FontFamily = styled.div`font-family: 'system-ui', sans-serif !important;`

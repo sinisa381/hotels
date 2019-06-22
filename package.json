@@ -42,7 +42,10 @@
 		"react-helmet": "^5.2.0",
 		"react-icons": "^3.5.0",
 		"react-spring": "^8.0.25",
-		"styled-system": "^5.0.5"
+		"styled-system": "^5.0.5",
+		"typeface-merriweather": "^0.0.72",
+		"typeface-open-sans-condensed": "^0.0.72",
+		"typeface-roboto": "^0.0.54"
 	},
 	"devDependencies": {
 		"prettier": "^1.17.1"
