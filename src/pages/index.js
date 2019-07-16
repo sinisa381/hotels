@@ -3,9 +3,17 @@ import Layout from '../components/layout'
 import Swiper from '../components/slider'
 import styled from '@emotion/styled'
 import { colors } from '../globals/colors'
-import { Container, Text, Heading } from '../components/shared'
+import Container from '@material-ui/core/Container'
+import { Text, Heading } from '../components/shared'
 import { Flex, Box, Card } from '@rebass/emotion'
-import { FaStar, FaBitcoin, FaDollarSign, FaPaypal, FaStripe, FaPhone } from 'react-icons/fa'
+import {
+	FaStar,
+	FaBitcoin,
+	FaDollarSign,
+	FaPaypal,
+	FaStripe,
+	FaPhone
+} from 'react-icons/fa'
 // missing fontfamilies
 export default () => {
 	return (
@@ -35,15 +43,24 @@ export default () => {
 									fontSize={[ 2, 3 ]}
 									as='p'
 								>
-									Hotel ipsum dolor sit amet consectetur adipisicing elit. Laudantium odit officiis
-									obcaecati facere eius ad, in quis suscipit quos autem similique quibusdam cumque
-									velit quam ratione porro incidunt. Reprehenderit repellendus dolore, amet id alias
-									at et, aspernatur impedit aut totam officiis ipsam voluptates libero placeat.
+									Hotel ipsum dolor sit amet consectetur
+									adipisicing elit. Laudantium odit officiis
+									obcaecati facere eius ad, in quis suscipit
+									quos autem similique quibusdam cumque velit
+									quam ratione porro incidunt. Reprehenderit
+									repellendus dolore, amet id alias at et,
+									aspernatur impedit aut totam officiis ipsam
+									voluptates libero placeat.
 								</Text>
 							</Container>
 						</Box>
 					</Flex>
-					<Flex justifyContent='space-around' flexWrap='wrap' mt={[ 4, 5, 6 ]} ml='2'>
+					<Flex
+						justifyContent='space-around'
+						flexWrap='wrap'
+						mt={[ 4, 5, 6 ]}
+						ml='2'
+					>
 						<Card
 							bg={colors.green}
 							width={[ 256, 320 ]}
@@ -53,7 +70,11 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading as='h2' textAlign='center' color={colors.blacks[8]}>
+							<Heading
+								as='h2'
+								textAlign='center'
+								color={colors.blacks[8]}
+							>
 								Accept payments with:
 							</Heading>
 							<Box>
@@ -76,10 +97,19 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading as='h2' textAlign='center' color={colors.blacks[8]}>
+							<Heading
+								as='h2'
+								textAlign='center'
+								color={colors.blacks[8]}
+							>
 								Free for John Wick
 							</Heading>
-							<Text color={colors.whites[8]} textAlign='center' mt='3' fontWeight='bold'>
+							<Text
+								color={colors.whites[8]}
+								textAlign='center'
+								mt='3'
+								fontWeight='bold'
+							>
 								Continental rules apply if you have the coin
 							</Text>
 							<Box />
@@ -93,11 +123,21 @@ export default () => {
 							mr='2'
 							boxShadow='4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
 						>
-							<Heading as='h2' textAlign='center' color={colors.blacks[8]}>
+							<Heading
+								as='h2'
+								textAlign='center'
+								color={colors.blacks[8]}
+							>
 								Since 1965
 							</Heading>
-							<Text color={colors.whites[8]} textAlign='center' mt='3' fontWeight='bold'>
-								Awarded for hospitality, luxury, food and comfort
+							<Text
+								color={colors.whites[8]}
+								textAlign='center'
+								mt='3'
+								fontWeight='bold'
+							>
+								Awarded for hospitality, luxury, food and
+								comfort
 							</Text>
 							<Box />
 						</Card>
@@ -122,7 +162,10 @@ export default () => {
 									We offer best services
 								</Text>
 								<Text color={colors.whites[8]}>
-									<Flex justifyContent='center' alignItems='center'>
+									<Flex
+										justifyContent='center'
+										alignItems='center'
+									>
 										<FaPhone />
 										<Text ml='10px' fontWeight='bold'>
 											000-000-000

@@ -5,9 +5,12 @@ import { mq } from '../globals'
 
 export const Heading = styled(Head)`
 font-family: Open Sans Condensed, sans-serif;
+
 `
 export const Text = styled(Para)`
 font-family:Roboto;
+/* delete */
+line-height:1.5;
 `
 
 export const Abbr = styled.abbr`
@@ -40,5 +43,6 @@ export const Container = styled.div`
 	}
 	${mq[2]} {
 		width: 70%;
+		max-width: 80ch;
 	}
 `

@@ -4,7 +4,8 @@ import Room from '../components/Room'
 import Layout from '../components/layout'
 import { colors } from '../globals/colors'
 import { Card, Flex, Heading, Box, Text } from '@rebass/emotion'
-import { Gallery, Container } from '../components/shared'
+import Container from '@material-ui/core/Container'
+import { Gallery } from '../components/shared'
 import { RoomContext } from '../context'
 import { mq } from '../globals'
 import styled from '@emotion/styled'
@@ -33,10 +34,26 @@ export default class Rooms extends React.Component {
 		let rooms = formatData(roomsdata)
 		let featuredRooms = rooms.filter(room => room.featured === true)
 		let maxPrice = Math.max(...rooms.map(item => item.price))
-		setRooms({ rooms, featuredRooms, sortedRooms: rooms, price: maxPrice, maxPrice })
+		setRooms({
+			rooms,
+			featuredRooms,
+			sortedRooms: rooms,
+			price: maxPrice,
+			maxPrice
+		})
 	}
 	render() {
-		let sortedRooms, rooms, handleChange, handleRange, capacity, price, minPrice, maxPrice, breakfast, pets, type
+		let sortedRooms,
+			rooms,
+			handleChange,
+			handleRange,
+			capacity,
+			price,
+			minPrice,
+			maxPrice,
+			breakfast,
+			pets,
+			type
 		if (this.context) {
 			sortedRooms = this.context.sortedRooms
 			rooms = this.context.rooms
@@ -89,16 +106,33 @@ export default class Rooms extends React.Component {
 
 					<section>
 						<form>
-							<FormContainer bg='transparent' mx='auto' my='3' px={[ 3, 3, 3 ]} py='3'>
+							<FormContainer
+								bg='transparent'
+								mx='auto'
+								my='3'
+								px={[ 3, 3, 3 ]}
+								py='3'
+							>
 								<Card mb={[ 2, 2, 3 ]}>
-									<Flex alignItems='center' justifyContent='space-between' px={[ 1, 2, 3 ]}>
+									<Flex
+										alignItems='center'
+										justifyContent='space-between'
+										px={[ 1, 2, 3 ]}
+									>
 										<Flex>
 											<label htmlFor='type'>
-												<Text mr='3' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+												<Text
+													mr='3'
+													fontFamily='sans'
+													fontSize={[ 2, 2, 3 ]}
+												>
 													Room type
 												</Text>
 											</label>
-											<FaBed size='30' color={colors.blacks[9]} />
+											<FaBed
+												size='30'
+												color={colors.blacks[9]}
+											/>
 										</Flex>
 										<MuiSelect
 											native
@@ -114,14 +148,25 @@ export default class Rooms extends React.Component {
 									</Flex>
 								</Card>
 								<Card mb={[ 2, 2, 3 ]}>
-									<Flex alignItems='center' justifyContent='space-between' px={[ 1, 2, 3 ]}>
+									<Flex
+										alignItems='center'
+										justifyContent='space-between'
+										px={[ 1, 2, 3 ]}
+									>
 										<Flex alignItems='center'>
 											<label htmlFor='capacity'>
-												<Text mr='3' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+												<Text
+													mr='3'
+													fontFamily='sans'
+													fontSize={[ 2, 2, 3 ]}
+												>
 													Guests
 												</Text>
 											</label>
-											<IoMdPersonAdd size='27' color={colors.blacks[9]} />
+											<IoMdPersonAdd
+												size='27'
+												color={colors.blacks[9]}
+											/>
 										</Flex>
 										<MuiSelect
 											native
@@ -137,14 +182,25 @@ export default class Rooms extends React.Component {
 									</Flex>
 								</Card>
 								<Card mb={[ 2, 2, 3 ]}>
-									<Flex alignItems='center' justifyContent='space-between' px={[ 1, 2, 3 ]}>
+									<Flex
+										alignItems='center'
+										justifyContent='space-between'
+										px={[ 1, 2, 3 ]}
+									>
 										<Flex alignItems='center'>
 											<label htmlFor='price'>
-												<Text mr='3' fontFamily='sans' fontSize={[ 2, 2, 3 ]}>
+												<Text
+													mr='3'
+													fontFamily='sans'
+													fontSize={[ 2, 2, 3 ]}
+												>
 													Price ${price}
 												</Text>
 											</label>
-											<IoMdPricetag size='26' color={colors.blacks[9]} />
+											<IoMdPricetag
+												size='26'
+												color={colors.blacks[9]}
+											/>
 										</Flex>
 										<Box width={100}>
 											<Slider
@@ -173,13 +229,20 @@ export default class Rooms extends React.Component {
 													type='checkbox'
 													id='breakfast'
 												/>
-												<Text mx='1' fontSize={[ 2, 2, 3 ]} fontFamily='sans'>
+												<Text
+													mx='1'
+													fontSize={[ 2, 2, 3 ]}
+													fontFamily='sans'
+												>
 													Breakfast
 												</Text>
 											</Flex>
 										</Box>
 										<Box mr={[ 2, 3, 3 ]}>
-											<Flex alignItems='center' justifyContent='center'>
+											<Flex
+												alignItems='center'
+												justifyContent='center'
+											>
 												<Checkbox
 													checked={pets}
 													color='primary'
@@ -189,7 +252,11 @@ export default class Rooms extends React.Component {
 													id='pets'
 												/>
 												<label htmlFor='pets'>
-													<Text mx='1' fontSize={[ 2, 2, 3 ]} fontFamily='sans'>
+													<Text
+														mx='1'
+														fontSize={[ 2, 2, 3 ]}
+														fontFamily='sans'
+													>
 														Pets
 													</Text>{' '}
 												</label>
@@ -204,7 +271,13 @@ export default class Rooms extends React.Component {
 						{' '}
 						{sortedRooms && (
 							<Gallery minHeight='70vh'>
-								{sortedRooms.map(room => <Room key={room.id} room={room} price={true} />)}
+								{sortedRooms.map(room => (
+									<Room
+										key={room.id}
+										room={room}
+										price={true}
+									/>
+								))}
 							</Gallery>
 						)}
 					</Container>

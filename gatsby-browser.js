@@ -1,4 +1,5 @@
 import React from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import 'typeface-merriweather'
 import 'typeface-roboto'
 import 'typeface-open-sans-condensed'
@@ -32,10 +33,16 @@ const muitheme = createMuiTheme({
 					boxShadow: `0px 0px 0px ${8}px ${fade(colors.green, 0.16)}`
 				},
 				'&$activated': {
-					boxShadow: `0px 0px 0px ${8 * 1.5}px ${fade(colors.green, 0.16)}`
+					boxShadow: `0px 0px 0px ${8 * 1.5}px ${fade(
+						colors.green,
+						0.16
+					)}`
 				},
 				'&$jumped': {
-					boxShadow: `0px 0px 0px ${8 * 1.5}px ${fade(colors.green, 0.16)}`
+					boxShadow: `0px 0px 0px ${8 * 1.5}px ${fade(
+						colors.green,
+						0.16
+					)}`
 				}
 			},
 
@@ -61,11 +68,14 @@ export const onClientEntry = () => {
 	}
 }
 export const wrapRootElement = ({ element }) => (
-	<ThemeProvider theme={theme}>
-		<MuiThemeProvider theme={muitheme}>
-			<RoomProviderHook>
-				<RoomProvider>{element}</RoomProvider>
-			</RoomProviderHook>
-		</MuiThemeProvider>
-	</ThemeProvider>
+	<React.Fragment>
+		<CssBaseline />
+		<ThemeProvider theme={theme}>
+			<MuiThemeProvider theme={muitheme}>
+				<RoomProviderHook>
+					<RoomProvider>{element}</RoomProvider>
+				</RoomProviderHook>
+			</MuiThemeProvider>
+		</ThemeProvider>
+	</React.Fragment>
 )
