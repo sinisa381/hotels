@@ -22,7 +22,7 @@ export default ({ data }) => {
       <Layout>
         <Container>
           <Box my="4">
-            <Heading fontFamily="sans" lineHeight="title" fontSize={[4, 4, 5]}>
+            <Heading fontFamily="sans" lineHeight="title" fontSize={[4, 5]}>
               Featured rooms
             </Heading>
             <Text
