@@ -33,9 +33,11 @@ export default () => {
 									FontFamily="mono"
 									fontSize={[4, 5]}
 								>
-									Welcome to our hotel
-								</Heading>
-								<Line />
+									<a href="https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a">
+										rbnb prettier
+									</a>{" "}
+								</Heading>{" "}
+								<Line />{" "}
 								<Text
 									mt="5"
 									lineHeight="title"
